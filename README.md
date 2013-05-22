@@ -1,4 +1,5 @@
-hushicai.com
-===================
+This is the source of Hushicai's Blog
 
-hushicai blog site. Entrance: [http://hushicai.com/](http://hushicai.com)
+You can find this site at http://hushicai.com.
+
+Copyright © 2013, Hushicai.

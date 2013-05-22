@@ -1,0 +1,23 @@
+---
+layout: default
+---
+{% if page.author %}
+{% assign author = page.author %}
+{% else %}
+{% assign author = site.author.name %}
+{% endif %}
+{% if page.email %}
+{% assign email = page.email %}
+{% else %}
+{% assign email = site.author.email %}
+{% endif %}
+<article>
+    <h2><a href="{{ page.url }}" title="{{ page.title }}">{{ page.title }}</a></h2>
+    <p>
+        <a target="_blank" href="http://github.com/{{ author }}"><img alt="{{ author }}" src="{{ email | to_gravatar }}?s=20&d=mm" width="20" height="20" />{{ author }}</a>
+        post on <span class="datetime">{{ page.date | date: "%Y-%m-%d" }}</span>
+</p>
+    <div>{{content}}</div>
+    {% capture permaurl %}http://{{site.host}}{{ page.url }}{% endcapture %}
+    <!--<p>永久链接：<a href="{{ permaurl }}">{{ permaurl }}</a></p>-->
+</article>
