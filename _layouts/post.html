@@ -2,19 +2,20 @@
 layout: default
 ---
 {% if page.author %}
-{% assign author = page.author %}
+    {% assign author = page.author %}
 {% else %}
-{% assign author = site.author.name %}
+    {% assign author = site.author.name %}
 {% endif %}
-{% if page.email %}
-{% assign email = page.email %}
-{% else %}
-{% assign email = site.author.email %}
-{% endif %}
+
+{% for tmp in site.team %}
+    {% if tmp.name == author %}
+        {% assign authorinfo = tmp %}
+    {% endif %}
+{% endfor %}
 <article>
     <h2><a href="{{ page.url }}" title="{{ page.title }}">{{ page.title }}</a></h2>
     <p>
-        <a target="_blank" href="http://github.com/{{ author }}"><img alt="{{ author }}" src="{{ email | to_gravatar }}?s=20&d=mm" width="20" height="20" />{{ author }}</a>
+    <a target="_blank" href="http://github.com/{{ authorinfo.name }}"><img alt="{{ author.name }}" src="http://www.gravatar.com/avatar/{{ authorinfo.hash }}?s=20&d=mm" width="20" height="20" />{{ authorinfo.name }}</a>
         post on <span class="datetime">{{ page.date | date: "%Y-%m-%d" }}</span>
 </p>
     <div>{{content}}</div>
