@@ -592,19 +592,13 @@ pre {
 .the-header .logo {
   font-family: UbuntuMono-B, consolas, monaco, monospace;
   margin: 0;
+  text-transform: none;
 }
 .the-header .logo a:visited {
   color: #2d2d2d;
 }
 .the-header .nav-global {
   text-transform: uppercase;
-}
-.the-header .nav-global .logo {
-  text-transform: none;
-}
-.the-header .nav-global .forkme {
-  position: relative;
-  top: 2px;
 }
 /* MAIN
 --------------------------------------------------------------------------------- */
@@ -900,15 +894,15 @@ pre {
 .the-header .unit-head {
   padding: 26px;
 }
-.the-header .unit-head .nav-global .logo {
+.the-header .unit-head .logo {
   display: block;
   width: auto;
 }
-.the-header .unit-head .nav-global .logo a {
+.the-header .unit-head .logo a {
   display: block;
   font-size: 30px;
   line-height: 52px;
-  padding-bottom: 26px;
+  padding: 26px;
 }
 .body .unit-body {
   border-top: 1px solid rgba(255, 255, 255, 0.6);
@@ -975,17 +969,17 @@ pre {
   .the-header .unit-head .nav-global li:last-child {
     border-width: 0;
   }
-  .the-header .unit-head .nav-global .logo {
+  .the-header .unit-head .logo {
     border-bottom: 1px solid rgba(0, 0, 0, 0.05);
     border-right: none 0;
     display: block;
     width: 100%;
   }
-  .the-header .unit-head .nav-global .logo a {
+  .the-header .unit-head .logo a {
     font-size: 30px;
     line-height: normal;
   }
-  .the-header .unit-head .nav-global .logo a:hover {
+  .the-header .unit-head .logo a:hover {
     background-color: transparent;
   }
 }
@@ -993,12 +987,12 @@ pre {
 	Not that old computer layout 
 */
 @media only screen and (min-width: 1280px) {
-  .the-header .unit-head .nav-global .logo {
+  .the-header .unit-head .logo {
     border-bottom: 0 none;
     display: block;
     width: auto;
   }
-  .the-header .unit-head .nav-global .logo a {
+  .the-header .unit-head .logo a {
     line-height: 18px;
     margin-bottom: 0;
     padding-left: 52px;
@@ -1048,12 +1042,12 @@ pre {
   .the-header .unit-head .nav-global li:nth-child(2) {
     border-width: 0;
   }
-  .the-header .unit-head .nav-global .logo {
+  .the-header .unit-head .logo {
     border-bottom: none 0;
     display: list-item;
     width: auto;
   }
-  .the-header .unit-head .nav-global .logo a {
+  .the-header .unit-head .logo a {
     display: block;
     font-size: 30px;
     line-height: 52px;

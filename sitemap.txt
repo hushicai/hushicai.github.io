@@ -8,4 +8,5 @@ http://hushicai.github.io/tags.html
 http://hushicai.github.io/archive.html
 http://hushicai.github.io/index.html
 
+http://hushicai.github.io/2013/05/23/test.html
 http://hushicai.github.io/lessons/2011/12/29/jekyll-introduction.html

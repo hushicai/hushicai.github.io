@@ -5,10 +5,18 @@
         <description>昔之追忆 - hushicai</description>
         <link>http://hushicai.github.io</link>
         <link>http://hushicai.github.io</link>
-        <lastBuildDate>2013-05-23T15:10:36+08:00</lastBuildDate>
-        <pubDate>2013-05-23T15:10:36+08:00</pubDate>
+        <lastBuildDate>2013-05-23T17:15:37+08:00</lastBuildDate>
+        <pubDate>2013-05-23T17:15:37+08:00</pubDate>
         <ttl>1800</ttl>
 
+
+        <item>
+                <title>test</title>
+                <description>&lt;p&gt;A simple test post.&lt;/p&gt;</description>
+                <link>http://hushicai.github.io/2013/05/23/test.html</link>
+                <guid>http://hushicai.github.io/2013/05/23/test</guid>
+                <pubDate>2013-05-23T00:00:00+08:00</pubDate>
+        </item>
 
         <item>
                 <title>Jekyll Introduction</title>
