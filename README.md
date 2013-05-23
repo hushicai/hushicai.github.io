@@ -1,5 +1,5 @@
-This is the source of Hushicai's Blog
+This is Hushicai's blog site.
 
-You can find this site at http://hushicai.com.
+You can visit it at http://hushicai.com.
 
 Copyright © 2013, Hushicai.
