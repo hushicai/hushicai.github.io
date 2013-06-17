@@ -8,9 +8,8 @@ body {
     padding: 0;
 }
 .header {
-    margin-bottom: 30px;
-    /* background: url(../img/bg.png) repeat 0 0 #e2e2de;*/
-    background: #F5F5F5;
+    /* margin-bottom: 10px;*/
+    /* background: #F5F5F5;*/
 }
 .header .logo {
     padding: 20px 0;
@@ -20,8 +19,7 @@ body {
 }
 .main {}
 .post {
-    /* border-bottom: 1px solid #ccc;*/
-    border-top: 2px solid #AAAAAA;
+    margin-bottom: 30px;
 }
 .post-meta {
     color: #999;
@@ -43,13 +41,10 @@ body {
     /* padding-top: 20px;*/
 }
 .footer {
-    /* text-align: center;*/
-    padding: 40px 0 80px;
-    margin-top: 30px;
-    border-top: 1px solid #d4d4d4;
-    background-color: #f5f5f5;
-    /* padding-bottom: 999px;*/
-    /* margin-bottom: -999px;*/
+    text-align: center;
+    padding: 60px 0;
+    /* border-top: 1px solid #e5e5e5;*/
+    /* background-color: #f5f5f5;*/
 }
 .footer ul {
     /* list-style-type: none;*/
