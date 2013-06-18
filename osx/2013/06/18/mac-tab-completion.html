@@ -3,8 +3,8 @@
     <head>
         <meta http-equiv="content-type" content="text/html; charset=utf-8">
 
-        <title>首页 - 昔之追忆</title>
-        
+        <title>mac tab completion - 昔之追忆</title>
+        <meta name="description" content="">
         <meta name="author" content="hushicai">
 
         <!-- Enable responsive viewport -->
@@ -26,7 +26,7 @@
                     </div>
                     <nav>
                     <ul class="nav nav-pills">
-                        <li class="active"><a href="/">HOME</a></li>
+                        <li ><a href="/">HOME</a></li>
                         <li ><a href="/archive.html">ARCHIVE</a></li>
                         <li ><a href="/about.html">About</a></li>
                     </ul>
@@ -36,6 +36,7 @@
             </header>
             <section class="main">
                 <div class="container">
+
 <article>
     <div class="post">
         <h2 class="post-title"><a href="/osx/2013/06/18/mac-tab-completion.html" title="mac tab completion">mac tab completion</a></h2>
@@ -55,25 +56,26 @@
 </small>
 </p>
 
-        <div class="post-content"><p>mac os系统上，/etc目录下并没有bash_completion.d目录，所以我们需要安装<code>bash-completion</code>，直接使用brew来安装：</p>
+        <div class="post-content">mac os系统上，/etc目录下并没有bash_completion.d目录，所以我们需要安装`bash-completion`，直接使用brew来安装：
 
-<p><code>bash
+```bash
 brew install bash-completion
-</code></p>
+```
 
-<p>然后在<code>~/.bash_profile</code>中配置：</p>
+然后在`~/.bash_profile`中配置：
 
-<p><code>bash
+```bash
 if [ -f $(brew --prefix)/etc/bash-completion ]; then
   . $(brew --prefix)/etc/bash_completion
 fi
-</code></p>
+```
 
-<p>在terminal上重新source一下即可：</p>
+在terminal上重新source一下即可：
 
-<p><code>bash
+```bash
 source ~/.bash_profile
-</code></p></div>
+```
+</div>
         
         <p class="post-foot">
             
@@ -88,11 +90,23 @@ source ~/.bash_profile
         </p>
         
         
+        
+        <!--<p>永久链接：<a href="http://0.0.0.0/osx/2013/06/18/mac-tab-completion.html">http://0.0.0.0/osx/2013/06/18/mac-tab-completion.html</a></p>-->
+        
     </div>
 </article>
 
-
-
+<div id="disqus_thread"></div>                                                                                                                              
+<script type="text/javascript">
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = 'http://hushicai.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="http://disqus.com" class="dsq-brlink">blog comments powered by <span class="logo-disqus">Disqus</span></a>
 </div>
             </section>
             <footer class="footer">
