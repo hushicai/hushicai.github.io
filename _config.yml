@@ -1,0 +1,7 @@
+brand: hushicai
+permalink: /:year/:month/:day/:title.html
+pygments: true
+exclude: [ "README.md", "Rakefile", "changelog.md"]
+
+author
+    name: hushicai

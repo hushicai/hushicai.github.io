@@ -1,0 +1,58 @@
+html {
+    overflow-x: hidden;
+    overflow-y: scroll;
+}
+
+h1 a:hover,
+h2 a:hover, 
+h3 a:hover, 
+h4 a:hover {
+    text-decoration: none;
+} 
+
+body {
+    position: relative;
+    /* padding-top: 70px;*/
+    padding: 0;
+}
+.header {
+    /* margin-bottom: 10px;*/
+    /* background: #F5F5F5;*/
+}
+.header .logo {
+    padding: 20px 0;
+}
+.header .logo h1 {
+    font-size: 60px;
+    line-height: 60px;
+}
+.main {}
+.post {
+    margin-bottom: 30px;
+}
+.post-meta {
+    color: #999;
+    /* margin-bottom: 20px;*/
+}
+.post-meta img {
+    margin-right: 3px;
+}
+.post-meta a {
+    padding: 0 2px;
+}
+.post-content {
+    padding: 1em 0;
+}
+.post-foot a {
+    padding: 0 2px;
+}
+.footer {
+    text-align: center;
+    padding: 60px 0;
+    /* border-top: 1px solid #e5e5e5;*/
+    /* background-color: #f5f5f5;*/
+}
+
+#disqus_thread {
+    /* padding-top: 20px;*/
+}

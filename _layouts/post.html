@@ -1,0 +1,34 @@
+---
+layout: default
+---
+
+<article>
+    <div class="post">
+        <h2 class="post-title"><a href="{{ page.url }}" title="{{ page.title }}">{{ page.title }}</a></h2>
+        <p class="post-meta">
+            <small>Posted on {{ page.date | date: "%Y-%m-%d" }}</small>
+        </p>
+        <div class="post-content">{{ content }}</div>
+        {% if page.tags.size > 0 %}
+        <p class="post-foot">
+            {% for tag in page.tags %}
+            <a href="/tag/{{ tag }}">#{{ tag }}</a>
+            {% endfor %}
+        </p>
+        {% endif %}
+        {% capture permaurl %}http://{{site.host}}{{ page.url }}{% endcapture %}
+        <!--<p>永久链接：<a href="{{ permaurl }}">{{ permaurl }}</a></p>-->
+    </div>
+</article>
+
+<div id="disqus_thread"></div> 
+
+<script> 
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = 'http://hushicai.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="http://disqus.com" class="dsq-brlink">blog comments powered by <span class="logo-disqus">Disqus</span></a>
