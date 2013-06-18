@@ -1,9 +1,7 @@
 <article>
     <div class="post">
         <h2 class="post-title"><a href="{{ post.url }}" title="{{ post.title }}">{{ post.title }}</a></h2>
-        <p class="post-meta">
-            <small>Posted on {{ post.date | date: "%Y-%m-%d" }}</small>
-        </p>
+        {% include meta %}
         <div class="post-content">{{post.content}}</div>
         {% if post.tags.size > 0 %}
         <p class="post-foot">

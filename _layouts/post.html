@@ -5,9 +5,8 @@ layout: default
 <article>
     <div class="post">
         <h2 class="post-title"><a href="{{ page.url }}" title="{{ page.title }}">{{ page.title }}</a></h2>
-        <p class="post-meta">
-            <small>Posted on {{ page.date | date: "%Y-%m-%d" }}</small>
-        </p>
+        {% assign post = page %}
+        {% include meta %}
         <div class="post-content">{{ content }}</div>
         {% if page.tags.size > 0 %}
         <p class="post-foot">
