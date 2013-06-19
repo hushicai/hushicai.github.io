@@ -4,6 +4,8 @@ pygments: true
 exclude: [ "README.md", "Rakefile", "changelog.md"]
 markdown: redcarpet
 
+paginate: 5 
+
 author:
     name: hushicai
     email: bluthcy@gmail.com

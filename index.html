@@ -3,6 +3,59 @@ layout: default
 title: A Frontend Engineer
 ---
 
-{% for post in site.posts limit: 10 %}
-{% include post %}
+<!-- This loops through the paginated posts -->
+{% for post in paginator.posts %}
+    {% include post %}
 {% endfor %}
+
+{% if paginator.total_pages > 1 %}
+<div class="pagination pull-right">
+    <ul class="pages">
+        {% if paginator.previous_page %}
+        <li class="previous">
+            {% if paginator.previous_page == 1 %}
+            <a href="/">&lt;&lt;</a>
+            {% else %}
+            <a href="{{ paginator.previous_page_path }}">&lt;&lt;</a>
+            {% endif %}
+        </li>
+        {% else %}
+        <li class="previous disabled">
+            <a href="#">&lt;&lt;</a>
+        </li>
+        {% endif %}
+
+        {% if paginator.page == 1 %}
+        <li class="page active">
+            <a href="#">1</a>
+        </li>
+        {% else %}
+        <li class="page">
+            <a href="/">1</a>
+        </li>
+        {% endif %}
+
+        {% for count in (2..paginator.total_pages) %}
+        {% if count == paginator.page %}
+        <li class="page active">
+            <a href="#">{{ count }}</a>
+        </li>
+        {% else %}
+        <li class="page">
+            <a href="/page{{ count }}">{{ count }}</a>
+        </li>
+        {% endif %}
+        {% endfor %}
+
+        {% if paginator.next_page %}
+        <li class="next">
+            <a href="{{ paginator.next_page_path }}">&gt;&gt;</a>
+        </li>
+        {% else %}
+        <li class="next disabled">
+            <a href="#">&gt;&gt;</a>
+        </li>
+        {% endif %}
+    </ul>
+</div>
+{% endif %}
