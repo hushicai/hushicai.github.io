@@ -26,7 +26,7 @@ markdown: redcarpet
 
 ### 试用一下
 
-jekyll默认情况下，要试用code highlight，得这么写：
+jekyll默认情况下，要使用code highlight，得这么写：
 
 {% highlight text %} {% raw %}
 {% highlight javascript %}
