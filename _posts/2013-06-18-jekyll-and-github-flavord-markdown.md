@@ -28,20 +28,20 @@ markdown: redcarpet
 
 jekyll默认情况下，要试用code highlight，得这么写：
 
-```
-{&#37; highlight javascript &#37;}
+{% highlight text %} {% raw %}
+{% highlight javascript %}
 alert('kao');
-{&#37; endhighlight &#37;}
-```
+{% endhighlight %}
+{% endraw %} {% endhighlight %}
 
 哎，君不见Github Flavored Markdown的**围栏式代码块（Fenced code blocks）**写法有多爽：
 
-<pre><code>
+{% highlight text %} {% raw %}
 ```javascript
 function test() {
    alert('test');
 }
 ```
-</code></pre>
+{% endraw %} {% endhighlight %}
 
 哈哈，瞧，这么写多么简单、快捷，暗爽到内伤！！！
