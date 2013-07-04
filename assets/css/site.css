@@ -14,21 +14,19 @@ body {
     position: relative;
     /* padding-top: 70px;*/
     padding: 0;
+    background: #eee;
 }
 .header {
     /* margin-bottom: 10px;*/
     /* background: #F5F5F5;*/
 }
-.header .logo {
-    padding: 20px 0;
+.main {
+    padding-top: 100px;
 }
-.header .logo h1 {
-    font-size: 60px;
-    line-height: 60px;
-}
-.main {}
 .post {
     margin-bottom: 30px;
+    padding: 10px 15px;
+    background: #fff;
 }
 .post-meta {
     color: #999;
