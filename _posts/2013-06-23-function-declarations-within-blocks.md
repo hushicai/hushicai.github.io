@@ -43,6 +43,7 @@ function bar() {
 }
 bar(); // 3
 ```
+<!-- more -->
 
 ### 什么是function expressions
 

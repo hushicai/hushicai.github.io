@@ -6,9 +6,10 @@
     <title>{{ page.title }} - {{ site.brand }}</title>
     <meta name="viewport" content="width=device-width, initial-scale=1,
     maximum-scale=1" />
-
-    <link rel="stylesheet" href="/assets/css/bootstrap.css">
-    <link rel="stylesheet" href="/assets/css/site.css">
+    <link rel="alternate" type="application/atom+xml" href="atom.xml"
+          title="Atom feed" />
+    <link rel="stylesheet" href="/assets/css/bootstrap.css" />
+    <link rel="stylesheet" href="/assets/css/site.css" />
 </head>
 <body>
     <div class="page">
@@ -23,21 +24,21 @@
                             <span class="icon-bar"></span>
                             <span class="icon-bar"></span>
                         </a>
-
+                        <!-- brand  -->
                         <a class="brand" href="/">{{site.brand}}</a>
-
                         <!-- Everything you want hidden at 940px or less, place within here -->
                         <div class="nav-collapse collapse">
                             <ul class="nav">
                                 <li><a href="/">Home</a></li>
+                                <li><a href="/about.html">About</a></li>
+                                <li><a href="/atom.xml">Atom Feed</a></li>
                                 <li><a href="{{site.project_url}}">Project</a></li>
                             </ul>
-                            <form class="navbar-search pull-left">
-                                <input class="search-query" type="text"
-                                placeholder="Search..." />
+                            <form id="google-custom-search" class="navbar-search pull-left">
+                                <input id="google-custom-search-query" class="search-query" type="text"
+                                       placeholder="Search..." />
                             </form>
                         </div>
-
                     </div>
                 </div>
             </div>
@@ -58,6 +59,21 @@
     <script type="text/javascript">
         var _bdhmProtocol = (("https:" == document.location.protocol) ? " https://" : " http://");
         document.write(unescape("%3Cscript src='" + _bdhmProtocol + "hm.baidu.com/h.js%3Feebaea29f083e5cc508252c0f12389ef' type='text/javascript'%3E%3C/script%3E"));
+    </script>
+    <script>
+        document.getElementById(
+            'google-custom-search'
+        ).onsubmit = function() {
+            var query = document.getElementById(
+                'google-custom-search-query'
+            ).value ;
+
+            window.open(
+                '{{site.google_search_url}}' 
+                + '?q=' + query + '%20' 
+                + 'site:{{site.production_url}}'
+            );
+        };
     </script>
 </body>
 </html>

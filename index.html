@@ -5,7 +5,31 @@ title: A Frontend Engineer
 
 <!-- This loops through the paginated posts -->
 {% for post in paginator.posts %}
-    {% include post %}
+<article>
+    <div class="post">
+        <h2 class="post-title"><a href="{{ post.url }}" title="{{ post.title }}">{{ post.title }}</a></h2>
+        {% include meta %}
+        <div class="post-content">
+        {% if post.content contains "<!-- more -->" %}
+            {{ post.content | split:"<!-- more -->" | first % }}
+            <p class="text-right post-content-more">
+                <a title="{{post.title}}" href="{{post.url}}">
+                    <span>➥</span>Read More
+                </a>
+            </p>
+        {% else %}
+            {{ post.content }}
+        {% endif %}
+        </div>
+        {% if post.tags.size > 0 %}
+        <p class="post-foot">
+            {% for tag in post.tags %}
+            <a href="/tag/{{ tag }}">#{{ tag }}</a>
+            {% endfor %}
+        </p>
+        {% endif %}
+    </div>
+</article>
 {% endfor %}
 
 {% if paginator.total_pages > 1 %}
