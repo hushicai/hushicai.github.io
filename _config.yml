@@ -13,8 +13,8 @@ author:
     email: bluthcy@gmail.com
 
 project_url: https://github.com/hushicai/hushicai.github.com
-production_url: http://hushicai.com/
+production_url: http://hushicai.com
 google_search_url: http://www.google.com.hk/search
 
-atom_path: atom.xml
-rss_path: rss.xml
+atom_path: /atom.xml
+rss_path: /rss.xml
