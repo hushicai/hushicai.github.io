@@ -17,7 +17,7 @@ if(x) {
 
 为什么呢？这涉及到`function declarations`与`function expressions`的问题。
 
-### 什么是function declarations
+## 什么是function declarations
 
 `ecma-262`对`function declarations`的定义如下：
 
@@ -45,7 +45,7 @@ bar(); // 3
 ```
 <!-- more -->
 
-### 什么是function expressions
+## 什么是function expressions
 
 `ecma-262`对`function expressions`的定义如下：
 
@@ -98,7 +98,7 @@ console.log(bar);  // undefined
 `named function expressions`的`function name`只能在它的function
 body中可见，而在当前scope下是不可见的，如上例所示，`console.log(bar)`是`undefined`。
 
-### function declarations与function expressions的区别
+## function declarations与function expressions的区别
 
 我们知道，javascript控制器在转入可执行脚本时，控制器会进入一个执行环境，然后进行[定义绑定初始化](http://ecmascript.cn/#151)。在这里我们就不多说定义绑定初始化，有兴趣的同学可以自行研读`ecma-262`，我们挑重点的讲：
 
@@ -110,7 +110,7 @@ body中可见，而在当前scope下是不可见的，如上例所示，`console
 declarations`会被控制器提前解析，也就是我们通常所讲的**预编译**，而`function
 expressions`则按顺序执行。
 
-### 小结
+## 小结
 
 那么文章开头的那段代码中，`function foo() {}`到底是function
 declarations呢？还是function expressions？事实上，我们可以把它叫做**function
@@ -136,8 +136,8 @@ if(x) {
 }
 ```
 
-### 参考文章
+## 参考文章
 
-* http://ecmascript.cn/#237
+* [http://ecmascript.cn/#237](http://ecmascript.cn/#237)
 
-* http://javascriptweblog.wordpress.com/2010/07/06/function-declarations-vs-function-expressions/
+* [http://javascriptweblog.wordpress.com/2010/07/06/function-declarations-vs-function-expressions/](http://javascriptweblog.wordpress.com/2010/07/06/function-declarations-vs-function-expressions/)

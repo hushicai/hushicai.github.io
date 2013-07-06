@@ -23,6 +23,5 @@ title : RSS Feed
                 <pubDate>{{ post.date | date_to_xmlschema }}</pubDate>
         </item>
 {% endfor %}
-
 </channel>
 </rss>

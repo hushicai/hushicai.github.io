@@ -10,7 +10,7 @@ Github Flavored Markdown使用redcarpet作为markdown渲染引擎, 而jekyll默�
 
 这就意味着：我们可以在jekyll中使用Github Flavored Markdown了。
 
-### 如何配置？
+## 如何配置？
 
 首先，为了能在本地运行jekyll，我们需要在本机上安装redcarpet：
 
@@ -24,7 +24,7 @@ gem install redcarpet
 markdown: redcarpet
 ```
 
-### 试用一下
+## 试用一下
 
 jekyll默认情况下，要使用code highlight，得这么写：
 
