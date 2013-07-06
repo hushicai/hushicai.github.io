@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "bower添加completion支持"
+title: "bower启用tab completion支持"
 description: ""
 ---
 

@@ -37,7 +37,3 @@ git reset HEAD <file>
 ```bash
 git add -u
 ```
-
-大功告成。
-
-

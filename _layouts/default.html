@@ -9,7 +9,7 @@
     <link rel="alternate" type="application/atom+xml" href="atom.xml"
           title="Atom feed" />
     <link rel="stylesheet" href="/assets/css/bootstrap.css" />
-    <link rel="stylesheet" href="/assets/css/site.css" />
+    <link rel="stylesheet" href="/assets/css/site.css?{{site.version}}" />
 </head>
 <body>
     <div class="page">
@@ -58,6 +58,8 @@
             </div>
         </footer>
     </div> 
+    <script src="/assets/js/jquery.js"></script>
+    <script src="/assets/js/bootstrap.js"></script>
     <script type="text/javascript">
         var _bdhmProtocol = (("https:" == document.location.protocol) ? " https://" : " http://");
         document.write(unescape("%3Cscript src='" + _bdhmProtocol + "hm.baidu.com/h.js%3Feebaea29f083e5cc508252c0f12389ef' type='text/javascript'%3E%3C/script%3E"));

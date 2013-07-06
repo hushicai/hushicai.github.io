@@ -1,4 +1,5 @@
 destination: /Users/hushicai/temp/blog
+version: 1.0.0
 brand: hushicai
 title: hushicai.com
 permalink: /:year/:month/:day/:title.html
