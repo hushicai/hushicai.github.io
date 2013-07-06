@@ -28,6 +28,8 @@ lsbom -pf com.codeius.izip.bom
 
 执行上述命令后，输出了类似以下内容：
 
+<!-- more -->
+
     /iZip.app
     ./iZip.app/Contents
     ./iZip.app/Contents/CodeResources
@@ -68,8 +70,6 @@ lsbom -pf com.codeius.izip.bom
     ...
 
 以上找到的这些文件，就是安装pkg的时候产生的文件，这些文件删除了**应该**就ok了！（**自行承担风险！**） 
-
-<!-- more -->
 
 ## 方式二
 
