@@ -45,6 +45,8 @@ init: function() {
 ```
 _注：init方法是iframe.js的入口方法_
 
+<!-- more -->
+
 iframe.js首先进入了init方法，在本地的时候，创建了一个这样的请求：
 
     http://api.ujian.cc/?url=http%3A%2F%2Flocalhost%3A4000%2F2013%2F07%2F07%2Fzai-ben-di-ce-shi-you-yan.html&title=%E5%9C%A8%E6%9C%AC%E5%9C%B0%E6%B5%8B%E8%AF%95%E5%8F%8B%E8%A8%80%20-%20hushicai&uid=1810854&hook=1
