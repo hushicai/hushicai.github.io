@@ -29,7 +29,7 @@ body {
     padding-top: 40px;
 }
 .post, .block {
-    margin-bottom: 50px;
+    margin-bottom: 30px;
     padding: 10px 15px;
     background: #fff;
     border-radius: 5px;
@@ -54,9 +54,13 @@ body {
 .post-foot a {
     padding: 0 2px;
 }
+.share {
+    overflow: hidden; /*bfc clear float*/
+    margin-bottom: 30px;
+}
 .footer {
     text-align: center;
-    padding: 20px 0 60px 0;
+    padding: 50px 0;
     /* border-top: 1px solid #e5e5e5;*/
     /* background-color: #f5f5f5;*/
 }
