@@ -28,7 +28,7 @@ body {
 .main {
     padding-top: 40px;
 }
-.post {
+.post, .block {
     margin-bottom: 50px;
     padding: 10px 15px;
     background: #fff;
