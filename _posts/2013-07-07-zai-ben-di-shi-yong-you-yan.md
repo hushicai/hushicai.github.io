@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "在本地测试友言"
+title: "在本地使用友言"
 description: ""
 ---
 
@@ -85,3 +85,5 @@ var uyan_uconfig = {
 在本地刷新一下，果然出来了！！！
 
 _注：当然我们也可以配置`127.0.0.1`为我们的线上域名，比如我`hushicia.com`，这样应该也可以解决不能本地调试的问题_
+
+另，jiathis另外一个产品**友荐**也存在类似问题，只不过它的config名叫`ujian_config`，我们只需要仿照上文配置`uyan_config`一样配置`ujian_config`的url即可在本地使用友荐。
