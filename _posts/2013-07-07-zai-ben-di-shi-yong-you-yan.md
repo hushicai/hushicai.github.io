@@ -16,7 +16,7 @@ description: ""
 node iframe.js > uyan.js
 ```
 
-再用 [http://jsbeautifier.org/](http://jsbeautifier.org/) 把uyan.js格式化一下就可以阅读了（_我是用vim的jsbeautify插件格式的_）。
+再用 [http://jsbeautifier.org/](http://jsbeautifier.org/) 把uyan.js格式化一下就可以阅读了（_我是用vim的jsbeautify插件格式化的_）。
 
 然后用chrome跟踪了一遍执行流程，发现有这么一段代码：
 
