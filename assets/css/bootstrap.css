@@ -800,6 +800,7 @@ pre code {
   color: #333333; /*fixed ie7*/
   white-space: pre;
   white-space: pre-wrap;
+  *white-space: pre; /*fixed ie7*/
   background-color: transparent;
   border: 0;
 }
