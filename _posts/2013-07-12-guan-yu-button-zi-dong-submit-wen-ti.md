@@ -17,7 +17,7 @@ description: ""
 可见，`button`是用来扩展input的，并不是不能用，相反，在有按钮需求的时候，应该多使用`button`。
 
 那是什么原因导致`button`会在回车的时候自动提交呢？回想一下，表单在什么情况下回车会自动提交呢？
-请看一下这些 [案例](http://codepen.io/hushicai/pen/aiwpj) （如果有更多的案例，欢迎补充）
+请看一下这些 [案例](http://jsfiddle.net/bluthcy/CeUem/) （如果有更多的案例，欢迎补充）
 
 好，现在回到开头的问题，先看看我那同事的需求是怎样的？
 
