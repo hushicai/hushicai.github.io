@@ -30,6 +30,8 @@ caniuse上面的统计很详细，我们只关注pc端浏览器的支持情况�
 
 原来是firefox初期版本的非标准实现`globalStorage`，但是：
 
+<!-- more -->
+
 > globalStorage is obsolete since Gecko 1.9.1 (Firefox 3.5) and unsupported
 > since Gecko 13 (Firefox 13). Just use localStorage instead. This proposed
 > addition to HTML5 has been removed from the HTML5 specification in favor of
