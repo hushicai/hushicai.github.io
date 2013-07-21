@@ -96,6 +96,12 @@ pkgutil --pkgs | grep -i izip
 
 ok，现在就可以找出izip pkg到底装了哪些文件：
 
+```bash
+pkgutil --file com.codeius.izip
+```
+
+终端输出的结果：
+
     iZip.app
     iZip.app/Contents
     iZip.app/Contents/CodeResources
