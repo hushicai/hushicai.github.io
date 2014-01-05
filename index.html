@@ -40,7 +40,7 @@ title: A Frontend Engineer
             {% if paginator.previous_page == 1 %}
             <a href="/">&lt;&lt;</a>
             {% else %}
-            <a href="/{{ paginator.previous_page_path }}">&lt;&lt;</a>
+            <a href="{{ paginator.previous_page_path }}">&lt;&lt;</a>
             {% endif %}
         </li>
         {% else %}
@@ -73,7 +73,7 @@ title: A Frontend Engineer
 
         {% if paginator.next_page %}
         <li class="next">
-            <a href="/{{ paginator.next_page_path }}">&gt;&gt;</a>
+            <a href="{{ paginator.next_page_path }}">&gt;&gt;</a>
         </li>
         {% else %}
         <li class="next disabled">
