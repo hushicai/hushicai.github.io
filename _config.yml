@@ -9,7 +9,7 @@ markdown: redcarpet
 redcarpet:
     extensions: ['autolink', 'tables']
 
-paginate: 5 
+paginate: 10
 
 author:
     name: hushicai
