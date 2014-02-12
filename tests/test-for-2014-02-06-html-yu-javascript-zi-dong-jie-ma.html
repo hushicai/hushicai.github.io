@@ -1,0 +1,41 @@
+<!DOCTYPE HTML>
+<html>
+    <head>
+        <meta charset="utf-8" />
+
+        <title>Test-for-2014-02-06-html-yu-javascript-zi-dong-jie-ma</title>
+    </head>
+    <body>
+    <script type="text/javascript">
+        function HtmlEncode(s) {
+            return String(s)
+                .replace(/&/g, '&amp;')
+                .replace(/</g, '&lt;')
+                .replace(/>/g, '&gt;')
+                .replace(/"/g, '&quot;');
+        }
+        </script>
+        <!-- 样例1-->
+        <input type="button" value="exec1" onclick="document.write('<img src=@ onerror=alert(123) />')" />
+        <!-- 样例2-->
+        <input type="button" value="exec2" onclick="document.write('&lt;img src=@ onerror=alert(123) /&gt;')" />
+        <!-- 样例3-->
+        <input type="button" value="exec3" onclick="document.write(HtmlEncode('<img src=@ onerror=alert(123) />'))" />
+
+        <input type="button" id="exec_btn1" value="exec4" />
+        <input type="button" id="exec_btn2" value="exec5" />
+        <script type="text/javascript">
+            function g(id) {
+                return document.getElementById(id);
+            }
+            // 样例1
+            g('exec_btn1').onclick = function(e) {
+                document.write('<img src=@ onerror=alert(123) />');
+            }
+            // 样例2
+            g('exec_btn2').onclick = function(e) {
+                document.write('&lt;img src=@ onerror=alert(123) /&gt;');
+            }
+        </script>
+    </body>
+</html>
