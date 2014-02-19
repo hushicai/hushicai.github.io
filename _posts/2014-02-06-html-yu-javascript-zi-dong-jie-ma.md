@@ -61,3 +61,5 @@ function HtmlEncode(s) {
 ```
 
 这种上下文中，HTML编码字符不会自动解码。
+
+[测试页面传送门>>](/tests/test-for-html-yu-javascript-zi-dong-jie-ma.html)
