@@ -16,7 +16,7 @@ description: ""
     }
 </style>
 
-<v:shape class="shape">
+<v:shape class="shape" path="xxx">
     <v:fill color="red"></v:fill>
     <v:stroke color="red"></v:stroke>
 </v:shape>
@@ -27,7 +27,7 @@ description: ""
 改成vml元素的opacity属性才干掉了锯齿：
 
 ```html
-<v:shape class="shape">
+<v:shape class="shape" path="xxx">
     <v:fill color="red" opacity="0.5"></v:fill>
     <v:stroke color="red" opacity="0.5"></v:stroke>
 </v:shape>
