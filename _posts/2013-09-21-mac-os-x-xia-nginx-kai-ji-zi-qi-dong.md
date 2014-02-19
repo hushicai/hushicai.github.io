@@ -4,7 +4,13 @@ title: "mac os x下nginx开机自启动"
 description: ""
 ---
 
-按照apple developer官网所说的，需要在`/Library/LaunchDaemons`下新建一个`plist`：
+按照apple developer官网所说的，用户的开机自启动任务一般都需要在以下目录建立一个plist文件：
+
+* /Library/LaunchDaemons/
+* /Library/LaunchAgents/
+* ~/Library/LaunchAgents/
+
+这次我们在`/Library/LaunchDaemons`下新建一个`nginx.plist`文件：
 
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
