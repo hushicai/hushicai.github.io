@@ -26,8 +26,14 @@ body {
     /* background: #F5F5F5;*/
 }
 .main {
-    padding-top: 40px;
+    padding-top: 30px;
 }
+
+.breadcrumbs {
+    margin-bottom: 15px;
+    font-size: 14px;
+} 
+
 .post, .block {
     margin-bottom: 30px;
     padding: 10px 15px;
