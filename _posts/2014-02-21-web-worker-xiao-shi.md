@@ -25,42 +25,42 @@ var worker = new Worker('/assets/js/tests/simple-web-worker.js');
 主线程脚本：
 
 ```html
-    <button onclick="sayHI()"></button>
-    <button onclick="sayBalala()"></button>
-    <button onclick="sayBye()"></button>
-    <output id="result"></output>
+<button onclick="sayHI()"></button>
+<button onclick="sayBalala()"></button>
+<button onclick="sayBye()"></button>
+<output id="result"></output>
 
-    <script type="text/javascript">
-    <button onclick="sayHI()">打招呼</button>
-    <button onclick="sayBalala()">随便说一句</button>
-    <button onclick="sayBye()">停止</button>
-    <output id="result"></output>
+<script type="text/javascript">
+<button onclick="sayHI()">打招呼</button>
+<button onclick="sayBalala()">随便说一句</button>
+<button onclick="sayBye()">停止</button>
+<output id="result"></output>
 
-    <script type="text/javascript">
-        function sayHI() {
-            worker.postMessage({
-                cmd: 'start',
-                msg: 'HI, ' + (+new Date)
-            });
-        }
-        function sayBalala() {
-            worker.postMessage({
-                cmd: 'balala',
-                msg: 'balala, ' + (+new Date)
-            });
-        }
-        function sayBye() {
-            worker.postMessage({
-                cmd: 'stop',
-                msg: 'Bye'
-            });
-        }
+<script type="text/javascript">
+    function sayHI() {
+        worker.postMessage({
+            cmd: 'start',
+            msg: 'HI, ' + (+new Date)
+        });
+    }
+    function sayBalala() {
+        worker.postMessage({
+            cmd: 'balala',
+            msg: 'balala, ' + (+new Date)
+        });
+    }
+    function sayBye() {
+        worker.postMessage({
+            cmd: 'stop',
+            msg: 'Bye'
+        });
+    }
 
-        var worker = new Worker('/assets/js/tests/simple-web-worker.js');
-        worker.addEventListener('message', function(e) {
-            document.getElementById('result').innerHTML = e.data;
-        }, false);
-    </script>
+    var worker = new Worker('/assets/js/tests/simple-web-worker.js');
+    worker.addEventListener('message', function(e) {
+        document.getElementById('result').innerHTML = e.data;
+    }, false);
+</script>
 ```
 
 在Worker文件中：
