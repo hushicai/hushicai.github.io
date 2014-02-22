@@ -8,6 +8,8 @@ description: ""
 
 我们可以通过Web Worker执行一些操作，例如触发长时间运行的脚本以处理计算密集型任务，同时却不会阻碍 UI或其他脚本处理用户互动。
 
+值得注意的是，[规范](http://www.whatwg.org/specs/web-apps/current-work/multipage/workers.html)中提到了两种Worker：[专用Worker](http://www.whatwg.org/specs/web-apps/current-work/multipage/workers.html#dedicated-workers-and-the-worker-interface)以及[共享Worker](http://www.whatwg.org/specs/web-apps/current-work/multipage/workers.html#shared-workers-and-the-sharedworker-interface)。本文只讲专用Worker，下文称之为“Web Worker”或“Worker”。
+
 `Web Worker`是在独立线程中运行的，因此，它们执行的代码需要保存在一个单独的文件中，我们可以这样创建一个Worker：
 
 ```javascript
