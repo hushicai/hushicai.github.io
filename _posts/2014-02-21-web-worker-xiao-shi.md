@@ -25,12 +25,6 @@ var worker = new Worker('/assets/js/tests/simple-web-worker.js');
 主线程脚本：
 
 ```html
-<button onclick="sayHI()"></button>
-<button onclick="sayBalala()"></button>
-<button onclick="sayBye()"></button>
-<output id="result"></output>
-
-<script type="text/javascript">
 <button onclick="sayHI()">打招呼</button>
 <button onclick="sayBalala()">随便说一句</button>
 <button onclick="sayBye()">停止</button>
