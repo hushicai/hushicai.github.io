@@ -58,7 +58,9 @@ self.addEventListener('message', function(e) {
 
 ## 消息传递
 
-Worker不能直接影响页面，它需要通过一个消息系统来传递消息。`postMessage`方法就是用来干这事的，例如：
+Worker不能直接影响页面，它需要通过一个消息系统来传递消息。
+
+Worker可以通过`postMessage`方法来传递消息，例如：
 
 <!-- more -->
 
