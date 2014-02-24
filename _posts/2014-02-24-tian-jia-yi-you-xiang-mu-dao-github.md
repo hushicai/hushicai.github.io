@@ -27,7 +27,7 @@ ok，接下来就是创建remote repo了，到github上创建一个新的repo，
 创建完成后，就可以得到一个远程仓库地址，将该地址添加到local repo中：
 
 ```bash
-git add remote origin https://github.com/yourname/my_project.git
+git remote add origin https://github.com/yourname/my_project.git
 ```
 
 更新remote repo到local repo中：
