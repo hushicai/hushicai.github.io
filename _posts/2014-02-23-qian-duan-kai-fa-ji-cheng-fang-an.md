@@ -110,7 +110,7 @@ bower install jquery#1.9.1
 bower prune jquery
 ```
 
-`bower`通过一个叫`bower.json`的文件来管理资源的，包括资源的存放路径等。
+`bower`通过一个叫`bower.json`的文件来管理资源的，它还有另外一个配置文件`.bowerrc`文件，用来配置资源的存放路径等。
 
 更多用法，可以参考[官网文档](http://bower.io)。
 
@@ -135,9 +135,9 @@ npm install grunt --save-dev
 * `package.json`
 * `gruntfile.js`
 
-项目根目录下，必须要有这两文件，当然还要有`bower`使用的`bower.json`文件。
+项目根目录下，必须要有这两文件。
 
-通常我们可以通过上文介绍的`yo`来自动生成以上三个文件（文件中包含一些常用的配置），比如：
+通常我们可以通过上文介绍的`yo`来自动生成以上两个文件（文件中包含一些常用的配置），比如：
 
 ```javascript
 // package.json example:
