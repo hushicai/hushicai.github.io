@@ -36,7 +36,7 @@ chrome扩展`Browser Action`与`Page Action`有啥区别？
 }
 ```
 
-更多关于`Browser Action`请参考 [官方文档](http://developer.chrome.com/extensions/browserAction)。
+更多关于`Browser Action`请参考[官方文档](http://developer.chrome.com/extensions/browserAction)。
 
 ## Page Action
 
