@@ -22,6 +22,8 @@ chrome扩展`Browser Action`与`Page Action`有啥区别？
 * badge，遮在icon上的文字提示（需要调用api才能显示，不可直接在manifest中配置）
 * popup，点击图标时弹出的层
 
+<!-- more -->
+
 在`manifest.json`中基本配置如下：
 
 ```javascript
