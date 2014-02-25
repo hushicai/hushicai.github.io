@@ -18,10 +18,10 @@ gem update --system && gem install compass
 which ruby
 ```
 
-我的是安装在`/usr/local/bin/ruby`，进到该目录上：
+我的是安装在`/usr/local/bin/ruby`，进到该目录中：
 
 ```bash
-ll | grep ruby
+ls -l | grep ruby
 ```
 
 找到`ruby`的原始安装目录：
