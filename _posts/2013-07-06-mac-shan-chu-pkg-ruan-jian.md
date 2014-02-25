@@ -14,8 +14,14 @@ mac并没有提供什么快捷删除方式，我们只能找到pkg安装后产�
 
 mac会维护一份pkg安装历史，只要找到那个文件夹，我们就可以对症下药了。
 
-我的机子是**osx
-10.8.4**，pkg历史安装列表在`/private/var/db/receipts`目录下，列出该目录，可以看到类似如下内容：
+我的机子是**osx 10.8.4**，pkg历史安装列表在`/private/var/db/receipts`目录下：
+
+```bash
+cd /private/var/db/receipts
+ls -l
+```
+
+列出该目录，可以看到类似如下内容：
 
     -rw-r--r--    1 root  wheel     47315  6 15 15:48 com.codeius.izip.bom
     -rw-r--r--    1 root  wheel       253  6 15 15:48 com.codeius.izip.plist
