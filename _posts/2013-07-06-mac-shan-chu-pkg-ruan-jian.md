@@ -75,13 +75,19 @@ lsbom -pf com.codeius.izip.bom
     ./iZip.app/Contents/Resources
     ...
 
-以上找到的这些文件，就是安装pkg的时候产生的文件，这些文件删除了**应该**就ok了！（**自行承担风险！**） 
+以上找到的这些文件，就是安装pkg的时候产生的文件，这些文件删除了**应该**就ok了！
 
 ## 方式二
 
-方式一虽然可行，但是很多人都抱怨没找到pkg安装历史列表目录（__确实不同版本的系统，目录是不一样的__），那有没有更自动一点的呢？答案是有的！
+方式一虽然可行，但是很多人都抱怨没找到pkg安装历史列表目录（__确实不同版本的系统，目录是不一样的__），那有没有更自动一点的呢？
 
-`pkgutil`命令这个时候就派上用场了。老规矩，先查看一下帮助，直接在命令行上执行`pkgutil`，看看有啥功能我们能用的（节选）:
+`pkgutil`命令这个时候就派上用场了。查看一下帮助：
+
+```bash
+man pkgutil # 或者直接pkgutil
+```
+
+看看有啥功能我们能用的:
 
     Receipt Database Commands:
       --pkgs, --packages     List all currently installed package IDs on --volume
