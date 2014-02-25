@@ -11,13 +11,7 @@ layout: default
     {% assign post = page %}
     {% include meta %}
     <div class="post-content">{{ content }}</div>
-    {% if page.tags.size > 0 %}
-    <p class="post-foot">
-        {% for tag in page.tags %}
-        <a href="/tag/{{ tag }}">#{{ tag }}</a>
-        {% endfor %}
-    </p>
-    {% endif %}
+    <div class="post-foot"></div>
     {% capture permaurl %}http://{{site.host}}{{ page.url }}{% endcapture %}
     <!--<p>永久链接：<a href="{{ permaurl }}">{{ permaurl }}</a></p>-->
 </article>
@@ -32,8 +26,8 @@ layout: default
 <script type="text/javascript">
     var wumiiPermaLink = "{{site.production_url}}{{page.url}}"; //请用代码生成文章永久的链接
     var wumiiTitle = "{{page.title}}"; //请用代码生成文章标题
-    var wumiiTags = "{{page.tags}}"; //请用代码生成文章标签，以英文逗号分隔，如："标签1,标签2"
-    var wumiiCategories = []; //请用代码生成文章分类，分类名放在 JSONArray 中，如: ["分类1", "分类2"]
+    var wumiiTags = "{{page.tags | join: ','}}"; //请用代码生成文章标签，以英文逗号分隔，如："标签1,标签2"
+    var wumiiCategories = ""; //请用代码生成文章分类，分类名放在 JSONArray 中，如: ["分类1", "分类2"]
     var wumiiSitePrefix = "http://hushicai.com/";
     var wumiiParams = "&num=6&mode=3&pf=JAVASCRIPT";
 </script>
