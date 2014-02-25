@@ -159,5 +159,6 @@ pkgutil --file com.codeius.izip
 
 ## 方式三
 
-哈哈，有的人要讲究效率，不喜欢折腾半天，就会问能不能一键搞定啊？真别说，还真有
-[ http://www.corecode.at/uninstallpkg/](http://www.corecode.at/uninstallpkg/)，偶然发现这个东西，貌似不错，试用了一下，好像真成功卸载了。（就是不知道有没有卸载干净...）
+哈哈，有的人要讲究效率，不喜欢折腾半天，就会问能不能一键搞定啊？
+
+真别说，还真有[http://www.corecode.at/uninstallpkg/](http://www.corecode.at/uninstallpkg/)，偶然发现这个东西，貌似不错，试用了一下，好像真成功卸载了。（就是不知道有没有卸载干净...）
