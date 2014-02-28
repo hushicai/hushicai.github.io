@@ -32,7 +32,7 @@ svn status | grep ! | awk '{print $2}' | xargs svn delete
     D   x/xx/x.js
     D   x/xx/x.css
     D   x/xx/x.png
-    ?   x/xx/x.jpg  ## 起来状态的文件
+    ?   x/xx/x.jpg 
     M   x/xx/xx.js
     ...
 
