@@ -1,7 +1,10 @@
 ---
 layout: post
 title: "jekyll and github flavored markdown"
-tags: "jekyll,github,markdown"
+tags: 
+    - jekyll
+    - github
+    - markdown
 description: ""
 ---
 

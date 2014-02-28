@@ -1,7 +1,10 @@
 ---
 layout: post
 title: "function declarations within blocks"
-tags: "javascript,function declarations,function expressions"
+tags: 
+    - javascript
+    - function declarations
+    - function expressions
 description: ""
 ---
 

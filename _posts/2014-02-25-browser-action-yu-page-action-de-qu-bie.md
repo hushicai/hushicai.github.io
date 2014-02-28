@@ -1,7 +1,9 @@
 ---
 layout: post
 title: "Browser Action与Page Action的区别"
-tags: ['browser action', 'page action']
+tags: 
+    - browser action
+    - page action
 description: ""
 ---
 
