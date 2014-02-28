@@ -38,11 +38,18 @@ layout: default
 </article>
 
 <article class="comment">
-<script type="text/javascript" id="wumiiComments">
-    var wumiiPermaLink = "{{site.production_url}}{{page.url}}"; //请用代码生成文章永久的链接
-    var wumiiTitle = "{{page.title}}"; //请用代码生成文章标题
-    var wumiiSitePrefix = "http://hushicai.com/"; //安装无觅评论插件的网站的域名，如果是放在子域名上，请提供子域名，如"http://blog.wumii.com"。如果这里填写的域名不对，请自行改正。
-    var wumiiCommentParams = "&pf=JAVASCRIPT";
-</script>
-<script type="text/javascript" src="http://widget.wumii.cn/ext/cw/widget"></script>
+    <div id="disqus_thread"></div>
+    <script type="text/javascript">
+        /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+        var disqus_shortname = 'hushicai'; // required: replace example with your forum shortname
+
+        /* * * DON'T EDIT BELOW THIS LINE * * */
+        (function() {
+            var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+            dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        })();
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    <a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
 </article>
