@@ -14,8 +14,8 @@ description: ""
     !   x/xx/x.js
     !   x/xx/x.css
     !   x/xx/x.png
-    ?   x/xx/x.jpg  ## 起来状态的文件
-    M   x/xx/xx.js
+    ?   x/xx/x.jpg  ## 其他状态的文件
+    M   x/xx/xx.js  ## 其他状态的文件
     ...
 
 现在我们想`svn delete`一下带"!"状态的文件或者目录，如果被删除的数量不多，我们当然可以挨个`svn delete`。
