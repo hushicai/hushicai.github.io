@@ -29,6 +29,8 @@ var jQuery = function() {
 
 JavaScript中就是使用function关键字来定义类的，类最基本的特性就是封装、继承、多态等，JavaScript没有extends、implement等关键字，它的继承是通过原型（prototype）来实现的，js中的每个函数都具有一个prototype属性（不同于```__proto__```），这个属性指向一个原型对象，原型对象中可以定义类的继承方法和属性等。
 
+<!-- more -->
+
 现在我们就来扩展jQuery的原型：
 
 ```javascript
