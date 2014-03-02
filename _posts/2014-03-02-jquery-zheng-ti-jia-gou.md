@@ -118,22 +118,23 @@ alert($().size());  //undefined
 
 现在貌似已经有点jquery雏形了。
 
-##分隔原型
+## 隔离原型
 
 `jQuery.fn.init`方法中，返回的是this关键字，不过该关键字实际上并非jQuery实例，而仅仅是jQuwry.prototype这个对象。
 
 如果这样，那所有`$()`调用返回的都是同一个对象，并且还可以随意往这个对象中增删改属性或者方法，这会干扰彼此的，例如：
 
 ```javascript
+// 1
 var $1 = $('#test1');
-
 delete $1.size;
 
+// 2
 var $2 = $('#test2');
 alert($2.size); // undefined
 ```
 
-这明显是行不通的，怎么办？当然还是得new一下：
+这明显是行不通的，我们得隔离一下`jQuery.prototype`，怎么办？当然还是得new一下：
 
 ```javascript
 var $ = jQuery = function() {
