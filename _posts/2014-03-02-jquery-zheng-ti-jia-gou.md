@@ -27,7 +27,7 @@ var jQuery = function() {
 
 上面定义的是jQuery一个空函数，啥都没做，实际上，这个函数就是面向对象语言中所谓的构造函数，是用来创建类的。
 
-JavaScript中就是使用function关键字来定义类的，类最基本的特性就是封装、继承、多态等，JavaScript没有extends、implement等关键字，它的继承是通过原型（prototype）来实现的。
+JavaScript中就是使用function关键字来定义类的，类最基本的特性就是封装、继承、多态等，JavaScript没有extends、implement等关键字，它是通过原型（prototype）来实现的。
 
 js中的每个函数都具有一个prototype属性（不同于```__proto__```），这个属性指向一个原型对象，原型对象中可以定义类的继承方法和属性等。
 
