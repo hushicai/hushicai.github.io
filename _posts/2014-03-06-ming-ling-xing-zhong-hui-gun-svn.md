@@ -14,7 +14,7 @@ description: ""
 
 在命令行环境下，回滚svn代码有以下两种场景：
 
-* 改动还未commit
+## 改动还未commit
 
 这种情况下，可以先查看一下`svn status`，看一下哪些文件做了修改：
 
@@ -34,7 +34,7 @@ svn revert . --recursive # .表示当前目录
 
 一旦revert了，本地代码就会丢失，请谨慎操作。
 
-* 改动已经commit
+## 改动已经commit
 
 这种情况下，我们先拿到更新到最新版本：
 
