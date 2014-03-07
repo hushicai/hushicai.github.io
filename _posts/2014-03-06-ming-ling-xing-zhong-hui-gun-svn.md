@@ -34,6 +34,8 @@ svn revert . --recursive # .表示当前目录
 
 一旦revert了，本地代码就会丢失，请谨慎操作。
 
+<!-- more -->
+
 ## 改动已经commit
 
 这种情况下，我们先拿到更新到最新版本：
