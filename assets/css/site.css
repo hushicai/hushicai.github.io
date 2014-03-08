@@ -75,6 +75,8 @@ body {
     padding: 10px;
     border: 1px solid #ccc;
     margin-bottom: 10px;
+    word-wrap: break-word;
+    word-break: break-all;
 }
 
 #disqus_thread {
