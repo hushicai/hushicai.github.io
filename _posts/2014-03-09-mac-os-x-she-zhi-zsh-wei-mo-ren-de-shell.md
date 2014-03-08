@@ -22,7 +22,7 @@ brew install zsh
 
 安装完成后，新版的zsh是安装到`/usr/local/bin`下的，所以为了使用这货，咱还得修改`/etc/shells`这个文件：
 
-```zsh
+```bash
 sudo vi /etc/shells
 
 # 在文件末尾添加
@@ -32,7 +32,7 @@ sudo vi /etc/shells
 
 修改完成之后：
 
-```zsh
+```bash
 chsh -s /usr/local/bin/zsh
 ```
 
