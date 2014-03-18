@@ -17,17 +17,15 @@ description: ""
 
 我在mac os x系统上很不幸地遇到了这个问题！
 
-安装完oh-my-zsh后，我添加一个nvm插件：
+添加一个nvm插件：
 
 ```bash
 plugins=(git nvm)
 ```
 
-我之前已经用nvm安装了node，但是重启zsh之后，却发现`node command not found`！
+之前已经用nvm安装了node，但是重启zsh之后，却发现`node command not found`！
 
-这个问题困扰了我好几天， 今天终于发现了问题的根源：__PATH路径不对__！
-
-我遇到这问题是因为我干了一件很悲催的事：
+plugin没加载吗？ 这个问题困扰了我好几天， 今天终于发现了问题的根源：__PATH路径不对__！
 
 ```bash
 plugins=(git nvm)
