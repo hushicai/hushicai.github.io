@@ -68,6 +68,7 @@ button.onclick = start;
 例如：
 
 ```javascript
+// 动画库雏形
 function animate(options) {
     var startTime = +new Date;
 
@@ -115,7 +116,6 @@ button2.onclick = move;
 <div class="example">
     <button id="test2" style="width:100px;">test2</button>
     <script type="text/javascript">
-        // 动画库雏形
         function animate(options) {
             var startTime = +new Date;
 
