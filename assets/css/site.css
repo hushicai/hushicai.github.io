@@ -10,6 +10,10 @@ h4 a:hover {
     text-decoration: none;
 } 
 
+ul, ol, li {
+    line-height: 26px;
+}
+
 .outline {
     display: none;
 }
@@ -77,6 +81,15 @@ body {
     margin-bottom: 10px;
     word-wrap: break-word;
     word-break: break-all;
+    line-height: normal;
+}
+.example input, 
+.example select {
+    line-height: normal;
+    height: auto;
+}
+.example ul {
+    margin: 0;
 }
 
 #disqus_thread {
