@@ -1,0 +1,24 @@
+destination: /Users/hushicai/temp/blog
+version: 1.0.0
+brand: hushicai
+title: hushicai.com
+permalink: /:year/:month/:day/:title.html
+pygments: true
+exclude: [ "README.md", "Rakefile", "changelog.md"]
+markdown: redcarpet
+redcarpet:
+    extensions: ['autolink', 'tables']
+
+paginate: 10
+
+author:
+    name: hushicai
+    email: bluthcy@gmail.com
+
+github_url: https://github.com/hushicai/hushicai.github.com
+production_url: http://hushicai.com
+google_search_url: http://www.google.com.hk/search
+
+about_path: /about.html
+atom_path: /atom.xml
+rss_path: /rss.xml

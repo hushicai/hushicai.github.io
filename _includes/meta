@@ -1,0 +1,9 @@
+{% if post.author %}
+    {% assign author = post.author %}
+{% else %}
+    {% assign author = site.author.name %}
+{% endif %}
+<p class="post-meta">
+    <small>Posted on <time>{{ post.date | date: "%Y-%m-%d" }}</time> by <b>{{ author }}</b></small>
+    <!-- <a class="post-meta-cc" href="#disqus_thread"></a> -->
+</p>
