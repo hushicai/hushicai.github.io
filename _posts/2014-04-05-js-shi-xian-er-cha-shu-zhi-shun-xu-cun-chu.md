@@ -4,7 +4,10 @@ title: "js实现二叉树之顺序存储"
 categories:
     -
 tags:
-    -
+    - js
+    - 二叉树
+    - 顺序存储
+    - binary tree
 description: ""
 ---
 
