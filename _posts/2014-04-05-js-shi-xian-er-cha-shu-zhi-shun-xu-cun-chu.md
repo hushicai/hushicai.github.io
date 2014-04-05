@@ -25,6 +25,8 @@ description: ""
 
 将数组表示二叉树的形式，应该长这样（最左边数字表示树的层序号）：
 
+<!-- more -->
+
 <img src="/assets/images/sqBinaryTree-init.png" alt="" />
 
 表示成二叉树结构之后，我们该怎么索引节点？ 一般会用到以下两个参数：
