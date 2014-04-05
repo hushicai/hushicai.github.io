@@ -23,7 +23,7 @@ body {
     /* padding-top: 70px;*/
     padding: 0;
     /* background: #eee;*/
-    background: url(../img/bg.jpg) repeat-x 0 0 #D8EBF0;
+    background: url(./img/bg.jpg) repeat-x 0 0 #D8EBF0;
 }
 .header {
     /* margin-bottom: 10px;*/

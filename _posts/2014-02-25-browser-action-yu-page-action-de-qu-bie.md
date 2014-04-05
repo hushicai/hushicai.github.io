@@ -13,7 +13,7 @@ chrome扩展`Browser Action`与`Page Action`有啥区别？
 
 这种类型扩展会在chrome的工具栏上显示一个图标，如下图所示：
 
-<img src="/assets/img/tests/chrome-extension-browser-action.png" alt="" width="120" />
+<img src="/images/tests/chrome-extension-browser-action.png" alt="" width="120" />
 
 当一个extension和很多页面相关时，应该采用`Browser Action`。
 
@@ -46,7 +46,7 @@ chrome扩展`Browser Action`与`Page Action`有啥区别？
 
 这种类型扩展会在chrome第地址栏右侧显示一个图标，如下图所示：
 
-<img src="/assets/img/tests/chrome-extension-page-action.png" width="120" alt="" />
+<img src="/images/chrome-extension-page-action.png" width="120" alt="" />
 
 当一个extension会依赖于某个页面而显示或隐藏时，应该采用`Page Action`。
 
