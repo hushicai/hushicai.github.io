@@ -23,11 +23,13 @@ ruby -e "$(curl -fsSL https://raw.github.com/Homebrew/homebrew/go/install)"
 但是执行完以上命令之后，却卡住了：
 
 * 命令上一直显示`Downloading and installing Homebrew...`
-* 经过一段漫长的时间后，出出现`unable to fetch https://github.com/Homebrew/homebrew.git`
+* 经过一段漫长的时间后，会出现`unable to fetch https://github.com/Homebrew/homebrew.git`
 
 研究很久，没有找到原因，直到晚上的时候，发现python的`https_open`方法也挂了？这就很不寻常了。
 
-很有可能系统的ssl有问题！查看了系统的`openssl`版本，发现不是最新的，我当场就决定重装一下`openssl`。
+很有可能系统的ssl有问题！查看了系统的`openssl`版本，发现不是最新的，我当场就决定先更新一下`openssl`试试。
+
+<!-- more -->
 
 ```bash
 curl --remote-name http://www.openssl.org/source/openssl-1.0.1f.tar.gz
