@@ -4,7 +4,11 @@ title: "mac osx下无法安装brew问题"
 categories:
     - 
 tags:
-    - 
+    - mac osx
+    - brew
+    - openssl
+    - 无法安装
+    - 卡住
 description: ""
 ---
 
