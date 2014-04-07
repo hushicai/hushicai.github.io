@@ -47,3 +47,5 @@ sudo make install
 
 看了`brew`的安装脚本，它实际上就是通过git安装到本地的，所以下次如果遇到诸如git
 clone不了https协议打头的仓库地址，就得先查查系统的`openssl`有没有问题！
+
+当然也有可能是被GFW墙了！如果被墙，那就只能想办法搞个vpn了！
