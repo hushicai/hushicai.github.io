@@ -58,22 +58,59 @@ function smf(level, order) {
 
 为啥-2？因为数组的索引是从0开始的，而我定义的level、order都是从1开始的（其实你也可以让它们从0开始）。
 
-通过以上函数获取索引之后，就可以直接成数组中取出节点。
+通过以上函数获取索引之后，就可以直接从数组中取出节点。
 
-## 顺序存储二叉树类
+## 二叉树类
 
-定义一个构造器，表示顺序存储二叉树类：
+定义一个构造器，表示二叉树类：
 
 ```javascript
 function SqBinaryTree(data) {
     data = data || [];
+    // 顺序存储空间
     this.nodes = data.slice(0);
 }
 ```
 
-`data`参数表示用户输入的数据，以上构造器要做的就是把数据封装起来，让我们可以用树的形式来访问数据。
+`data`参数表示用户输入的数据，二叉树构造器要做的就是把数据存储到`nodes`中，然后我们就可以用树的形式来访问数据。
 
 ### 基本操作
+
+
+
+#### 获取深度
+
+一棵树的深度就是它的层数，怎么计算呢？
+
+```javascript
+SqBinaryTree.prototype.getDepth = function() {
+    var n = this.nodes.length;
+    // 找到最后一个节点
+    while(--n) {
+        if (this.nodes[n] !== undefined) {
+            break;
+        }
+    }
+    // 总节点数
+    n += 1;
+
+    var k = -1;
+
+    // 深度为k的二叉树最多有2^k - 1个节点
+    do {
+        k++;
+    } while (Math.pow(2, k) - 1 < n);
+
+    return k;
+}
+```
+
+上图的二叉树深度就是:
+
+```javascript
+var sbt = new SqBinaryTree([1, 3, 4, 6, 8, 10, 2, 5]);
+sbt.getDepth(); // 4
+```
 
 #### 获取节点
 
