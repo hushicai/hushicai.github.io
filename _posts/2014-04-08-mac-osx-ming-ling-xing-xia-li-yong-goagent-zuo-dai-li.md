@@ -30,3 +30,12 @@ _PS：别用`ping`对以上代理进行测试，不管用。_
 
 这说明brew的curl确实使用了我刚才设置的代理。
 
+
+大伙可以在`~/.zshrc`或者`~/.bash_profile`中添加这样的alias：
+
+```bash
+alias goproxy='export http_proxy=http://127.0.0.1:8087 https_proxy=http://127.0.0.1:8087'
+alias disproxy='unset http_proxy https_proxy'
+```
+
+这样下次就可以很方便地切换proxy了！
