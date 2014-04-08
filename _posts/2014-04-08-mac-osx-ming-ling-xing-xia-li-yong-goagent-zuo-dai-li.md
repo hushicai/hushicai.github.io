@@ -15,9 +15,7 @@ description: ""
 
 于是就开始找代理了，但是手头上只有goagent，没有vpn，咋整？
 
-试着google了一一下goagent是否支持命令行代理，没有找到合适的解决办法。（网上是有一些解决办法，但是我试了不管用，不知道为啥）
-
-最后在一篇文章上，偶然发现了curl、wget等http应用程序会调用`http_proxy`和`https_proxy`这两环境变量进行代理，于是我就尝试设置一下：
+偶然在一篇文章上发现了curl、wget等http应用程序会调用`http_proxy`和`https_proxy`这两环境变量进行代理，于是我就尝试设置一下：
 
 ```bash
 export http_proxy=http://127.0.0.1:8087
