@@ -82,6 +82,10 @@ function SqBinaryTree(data) {
 
 一棵树的深度就是它的层数，怎么计算呢？
 
+因为顺序存储可能不是紧凑的，比如：[1, undefined, 3, 2, 10,
+12]，其中的undefined表示该位置没有节点，所以要计算深度得先从后往前找到最后一个非undefined的节点，该节点所在的索引 +
+1就是总的节点数，然后就可以用一个循环来计算深度：
+
 ```javascript
 SqBinaryTree.prototype.getDepth = function() {
     var n = this.nodes.length;
@@ -105,7 +109,7 @@ SqBinaryTree.prototype.getDepth = function() {
 }
 ```
 
-上图的二叉树深度就是:
+例如:
 
 ```javascript
 var sbt = new SqBinaryTree([1, 3, 4, 6, 8, 10, 2, 5]);
