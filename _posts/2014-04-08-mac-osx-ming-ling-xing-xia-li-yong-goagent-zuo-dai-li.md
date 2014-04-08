@@ -24,7 +24,7 @@ export https_proxy=$http_proxy
 
 _PS：别用`ping`对以上代理进行测试，不管用。_
 
-然后试着重新安装vim7.4，果真不在被墙，成功下载了！并且在goagent的log上也可以观察到：
+试着重新安装vim7.4，果然不再被墙，成功下载了！并且在goagent的log上也可以观察到：
 
     INFO - [Apr  8 16:13:33] 127.0.0.1:60865 "GAE GET http://luajit.org/download/LuaJIT-2.0.3.tar.gz HTTP/1.1" 206 271735 
 
