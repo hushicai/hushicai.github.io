@@ -69,13 +69,12 @@ lookup、connecting、sending、waiting等过程，首字节时间点就是用�
 看过浏览器工作原理的小伙伴们应该都知道，非可视化的DOM元素不会显示到窗口中，例如head，这就意味着浏览器在绘制之前，
 至少需要先解析完head元素中的内容。
 
-_PS：没看过的同学，可以先移步[浏览器的工作原理](http://www.html5rocks.com/zh/tutorials/internals/howbrowserswork/)。_
+一般情况下，body元素是HTML文档中第一个可视化元素，因此，我们也可以认为浏览器开始解析body标签的时刻就是`Start Render
+Time`，利用这一点，我们可以在body标签内的开始处埋入一段脚本（也有的是在head的结束处埋入脚本），用以获取这个`Start Render Time`。
 
-即是说head标签解析越久，开始渲染时间就会越晚。
+_PS：请参考[浏览器的工作原理](http://www.html5rocks.com/zh/tutorials/internals/howbrowserswork/)。_
 
-极端情况下，head中如果存在一段执行时间很长的script，那显然开始渲染时间会严重delay。
-
-用这个时间减去首字节时间，就能得到head标签的解析时间，从而我们就能知道head标签中的内容是否拖长了首屏时间。
+这个时间减去首字节时间，就是head标签的解析时间，从而我们就能知道head标签中的内容是否拖长了首屏时间。
 
 _Note: 通常这个时间也叫白屏时间或者First Paint Time等。_
 
@@ -99,11 +98,11 @@ _Note: 通常这个时间也叫白屏时间或者First Paint Time等。_
 
 ## 小结
 
-综上，如果我们发现站点的首屏时间很长，应该从以下三方面进行排查:
+综上，如果我们发现站点的首屏时间很长，应该从以下三方面逐步进行排查:
 
-* 减少`Time Of First Byte`时间，这通常可以通过cdn、cache、chunked、提升后台程序性能等手段来优化；
-* 减少head标签中的资源，尤其避免使用在head中使用script
-* 减少首屏区域的资源加载，这通常可以用lazyload等手段来优化
+* `Time Of First Byte`，通常可以通过cdn、cache、chunked、提升后台程序性能等手段来优化；
+* `Start Render Time`，通常是避免在head中使用过多资源，比如将js放到body结束处等；
+* 首屏时间，通常做法是减少首屏区域内容，或者用lazyload等手段来优化；
 
 如果你想监控站点的性能，可以使用yslow、pagespeed等工具
 
