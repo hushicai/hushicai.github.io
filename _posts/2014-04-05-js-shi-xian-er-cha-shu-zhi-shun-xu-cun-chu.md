@@ -60,9 +60,9 @@ function smf(level, order) {
 
 通过以上函数获取索引之后，就可以直接从数组中取出节点。
 
-## 二叉树类
+## 基本操作
 
-定义一个构造器，表示二叉树类：
+先定义一个构造器，表示二叉树类：
 
 ```javascript
 function SqBinaryTree(data) {
@@ -74,9 +74,11 @@ function SqBinaryTree(data) {
 
 `data`参数表示用户输入的数据，二叉树构造器要做的就是把数据存储到`nodes`中，然后我们就可以用树的形式来访问数据。
 
-### 基本操作
+现在我们就可以通过以下方式来获得一颗顺序存储二叉树：
 
-
+```javascript
+var sbt = new SqBinaryTree([1, 3, 4, 6, 8, 10, 2, 5]);
+```
 
 #### 获取深度
 
@@ -112,7 +114,6 @@ SqBinaryTree.prototype.getDepth = function() {
 例如:
 
 ```javascript
-var sbt = new SqBinaryTree([1, 3, 4, 6, 8, 10, 2, 5]);
 sbt.getDepth(); // 4
 ```
 
