@@ -155,7 +155,7 @@ jQuery.fn.init.prototype = jQuery.fn;
 上面已经搭好了架子，jQuery还提供了扩充机制，那就是`extend`方法，有两种扩充方法：
 
 * `jQuery.extend`，这种方式直接将方法扩充到jQuery这个全局对象中
-* `jQuery.fn.extend`，这中方式则是将方法扩充到jQuery的原型中，所有jQuery实例就能继承到这些方法，例如：
+* `jQuery.fn.extend`，这种方式则是将方法扩充到jQuery的原型中，所有jQuery实例就能继承到这些方法，例如：
 
 ```javascript
 jQuery.fn.extend({
