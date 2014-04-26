@@ -102,8 +102,10 @@ function x(data) {
 
 <img src="/assets/images/jsonp-remove-and-dispose.png" alt="" width="800">
 
-如上图所示，有两个低谷，节点数和内存使用量都能回到初始状态！
+如上图所示，有两个很明显的低谷，节点数和内存使用量在该时刻相同！说明最终是没有产生leak！
 
-综上，第三次实验的方法应该是个最佳的解决方案（个人意见，如有更好方案，请指导在下）！测试代码见[gist](https://gist.github.com/hushicai/11315775)！
+_疑惑：为什么在前面的回收点上，内存还是在继续增加，而到了3.7min ~ 4min之间的某个时刻才完全释放了？_
+
+测试代码见[gist](https://gist.github.com/hushicai/11315775)！
 
 _号外：据说IE可以共用同一个script。_
