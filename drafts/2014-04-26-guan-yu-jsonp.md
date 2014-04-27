@@ -34,22 +34,25 @@ function jsonp(src) {
 
 ```javascript
 function x(data) {
-    console.log(data);
+    // console.log(data);
 }
-var interval;
 function start() {
-    interval = setInterval(
-        function() {
-            jsonp('http://localhost:3000?callback=x');
-        },
-        1000
-    );
+    jsonp('http://localhost:3000?callback=x');
 }
 function stop() {
     clearInterval(interval);
 }
+
+var interval;
+function loop() {
+    interval = setInterval(
+        start,
+        1000
+    );
+
+}
 // 开始测验
-start();
+loop();
 ```
 
 _ps：以下所有结果都是在chrome隐私模式下得到的！_
@@ -66,13 +69,13 @@ _ps：以下所有结果都是在chrome隐私模式下得到的！_
 
 ```javascript
 function x(data) {
-    // 这里直接在callback里面删除script
-    // 我是每1s发一个jsonp请求，而每个请求的响应时间才十几毫秒
-    // 因此，我可以保证这里删掉的script就是之前发的jsonp请求
-    // 在实际应用中，可不能直接这么干，可能需要用到id进行关联
     var script = document.head.getElementsByTagName('script')[0];
     document.head.removeChild(script);
     console.log(data);
+}
+function loaded() {
+    this.parentNode.removeChild(this);
+    this.onload = null;
 }
 ```
 
