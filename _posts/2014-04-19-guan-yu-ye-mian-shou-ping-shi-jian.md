@@ -54,9 +54,11 @@ description: ""
 ### Time Of First Byte
 
 浏览器请求一个文档，需要经过blocking、proxying、dns
-lookup、connecting、sending、waiting等过程，首字节时间点就是用来衡量这些过程的性能的一个关键指标。
+lookup、connecting、sending、waiting等过程，首字节时间就是用来衡量这些过程性能的一个关键指标。
 
 首字节时间越长，浏览器就越晚解析文档，首屏时间就越长。
+
+在HTML5 performance API中提供了这个时间点。
 
 如果首字节时间越长，那么瓶颈应该应该是存在于网络、后端程序等方面。
 
@@ -69,8 +71,9 @@ lookup、connecting、sending、waiting等过程，首字节时间点就是用�
 看过浏览器工作原理的小伙伴们应该都知道，非可视化的DOM元素不会显示到窗口中，例如head，这就意味着浏览器在绘制之前，
 至少需要先解析完head元素中的内容。
 
-一般情况下，body元素是HTML文档中第一个可视化元素，因此，我们也可以认为浏览器开始解析body标签的时刻就是`Start Render
-Time`，利用这一点，我们可以在body标签内的开始处埋入一段脚本（也有的是在head的结束处埋入脚本），用以获取这个`Start Render Time`。
+一般情况下，只要文档中的css资源准备就绪，浏览器就可以开始绘制，而通常我们的css文件都会放在head中，
+因此，我们可以认为浏览器开始渲染body标签或者解析玩head标签的时刻就是`Start Render Time`，
+利用这一点，我们可以在body标签开始处或者head标签结束处埋入一段脚本，用以获取这个`Start Render Time`。
 
 _PS：请参考[浏览器的工作原理](http://www.html5rocks.com/zh/tutorials/internals/howbrowserswork/)。_
 
