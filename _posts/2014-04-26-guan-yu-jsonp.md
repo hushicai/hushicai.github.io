@@ -24,11 +24,13 @@ function jsonp(src) {
 
 这样就简单地实现了一个jsonp，但是这样就行了吗？
 
+显然是不行的，DOM节点是存在本地内存中，节点越多，内存占用量就越大！
+
 <!-- more -->
 
-先来做一个实验，在chrome下，每隔1s发一个jsonp请求，观察一下chrome timeline面板上的memory mode。
+在chrome下，每隔1s发一个jsonp请求，观察一下chrome timeline面板上的memory选项。
 
-实验代码如下：
+试验代码如下：
 
 ```javascript
 function x(data) {
@@ -58,7 +60,7 @@ _ps：以下所有结果都是在chrome隐私模式下得到的！_
 
 从图中我们看到，dom节点都未被回收，数量一直在增加中（图中下方那条很陡的线），内存也在逐步增加中。
 
-因此，__jsonp动态创建的script标签是需要额外处理的！__
+因此，jsonp动态创建的script标签是需要额外处理的！
 
 怎么处理呢？直接删掉可以吗？试一下：
 
@@ -80,11 +82,11 @@ function x(data) {
 
 从上图我们可以看到，dom节点都被正常回收了！但是内存使用量却在逐步增加中。这是为啥？难道删除节点并不能完全释放内存？
 
+_疑惑：为啥script删除之后，内存没完全释放？或者这部分递增的内存不是节点造成的？_
+
 google了一番，发现真存在这种问题，有人建议这么干：删除节点后，同时还得删除节点的各个属性？
 
-_ps：为啥script删除之后，内存没完全释放？这估计得研究研究垃圾回收机制了！_
-
-我又试了一下：
+于是我又试了一下：
 
 ```javascript
 function x(data) {
@@ -102,9 +104,11 @@ function x(data) {
 
 <img src="/assets/images/jsonp-remove-and-dispose.png" alt="" width="800">
 
-如上图所示，有两个很明显的低谷，节点数和内存使用量在该时刻相同！说明最终是没有产生leak！
+如上图所示，有两个很明显的低谷，节点数和内存使用量在该时刻相同！
 
 _疑惑：为什么在前面的回收点上，内存还是在继续增加，而到了3.7min ~ 4min之间的某个时刻才完全释放了？_
+
+综上，第三次实验的方法貌似是可以解决jsonp memory leak问题的！
 
 测试代码见[gist](https://gist.github.com/hushicai/11315775)！
 
