@@ -1,0 +1,735 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>前端志</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  
+    <link rel="alternative" href="/atom.xml" title="前端志" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.ico">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  <!--[if lt IE 9]><script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7/html5shiv.min.js"></script><![endif]-->
+</head>
+
+<body>
+<div id="container">
+  <div id="wrap">
+    <header id="header">
+  <div id="header-outer" class="outer">
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+          <a class="main-nav-link" href="https://github.com/hushicai">Github</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+          <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://hushicai.github.io"></form>
+      </div>
+    </div>
+  </div>
+</header>
+
+    <div class="outer">
+      <section id="main">
+  
+    <article id="post-tui-jian-de-nodejs-an-zhuang-fang-shi" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2014/02/18/tui-jian-de-nodejs-an-zhuang-fang-shi.html" class="article-date">
+  <time datetime="2014-02-17T16:00:00.000Z" itemprop="datePublished">2014-02-18</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2014/02/18/tui-jian-de-nodejs-an-zhuang-fang-shi.html">推荐的nodejs安装方式</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>nodejs的安装方式有很多种，最简单的方式莫过于直接在<a href="http://nodejs.org" target="_blank" rel="noopener">官网</a>直接点击install。</p>
+<p>本人刚开始正式玩nodejs的时候，也是直接按照官网上的方式安装，但是后来随着nodejs的深入，发现了各种令人蛋疼的问题：</p>
+<ul>
+<li>不方便更换版本</li>
+<li>不方便卸载</li>
+<li>…</li>
+</ul>
+<p>后来在github上发现了<a href="https://github.com/creationix/nvm" target="_blank" rel="noopener">nvm</a>，这货挺好用的，管理nodejs很方便：</p>
+<ul>
+<li>一开始不要安装nodejs（如果之前装了nodejs，想办法卸掉…），安装nvm</li>
+<li>看看nvm官方文档，随便玩转nodejs</li>
+</ul>
+<p>有了nvm，想卸载就卸载，想换版本就换版本…</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      
+        <a data-url="http://hushicai.github.io/2014/02/18/tui-jian-de-nodejs-an-zhuang-fang-shi.html" data-id="cjjbk4w8b000norv91d9z9kr1" class="article-share-link" data-share="baidu">share</a>
+      
+
+      
+        <a href="http://hushicai.github.io/2014/02/18/tui-jian-de-nodejs-an-zhuang-fang-shi.html#disqus_thread" class="article-comment-link">comments</a>
+      
+
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-mac-os-x-xia-shan-chu-kai-ji-zi-qi-dong-ren-wu" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2014/02/18/mac-os-x-xia-shan-chu-kai-ji-zi-qi-dong-ren-wu.html" class="article-date">
+  <time datetime="2014-02-17T16:00:00.000Z" itemprop="datePublished">2014-02-18</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2014/02/18/mac-os-x-xia-shan-chu-kai-ji-zi-qi-dong-ren-wu.html">mac os x下删除开机自启动任务</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>如果能在<code>系统偏好设置 - 用户与群组 - 登录项</code>中找到自启动任务，那么把它删掉就可以了；如果找不到，就继续看下文。</p>
+<p>mac os x系统中，自启动任务一般都会在以下某个目录生成一个或多个plist文件：</p>
+<ul>
+<li>/Library/LaunchDaemons/</li>
+<li>/Library/LaunchAgents/</li>
+<li>~/Library/LaunchAgents/</li>
+</ul>
+<p>打开终端，进入到以上几个目录，找到对应的plist文件（有的程序可能有多个plist），然后执行以下命令就可以删除自启动任务：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">launchctl unload -w x.xx.xxx.plist</span><br></pre></td></tr></table></figure>
+<p>重启mac，该任务应该不会再自动启动了！</p>
+<p>在删除自启动任务时，可能会出现以下问题：</p>
+<pre><code>launchctl error unloading
+</code></pre><p>出现这种错误，一般情况下都是因为该自启动任务所属用户与调用unload的用户（也就是本次登录的用户）不符，这个时候可以尝试添加<code>sudo</code>。</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      
+        <a data-url="http://hushicai.github.io/2014/02/18/mac-os-x-xia-shan-chu-kai-ji-zi-qi-dong-ren-wu.html" data-id="cjjbk4w89000morv9zj4da0ba" class="article-share-link" data-share="baidu">share</a>
+      
+
+      
+        <a href="http://hushicai.github.io/2014/02/18/mac-os-x-xia-shan-chu-kai-ji-zi-qi-dong-ren-wu.html#disqus_thread" class="article-comment-link">comments</a>
+      
+
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-referer-fang-hu-cuo-shi" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2014/02/09/referer-fang-hu-cuo-shi.html" class="article-date">
+  <time datetime="2014-02-08T16:00:00.000Z" itemprop="datePublished">2014-02-09</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2014/02/09/referer-fang-hu-cuo-shi.html">referer防护措施</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p><code>referer</code>是指请求来源，很多网站通过这个来判断用户是从哪个页面/网站过来的。</p>
+<p><code>referer</code>很容易泄露，经常会被攻击者利用，一般情况下，可以采用如下方式来进行<code>referer</code>的保护：</p>
+<ul>
+<li>尽量不要在url中直接带上隐私数据；</li>
+<li>对第三方链接进行中间跳转，跳转到自己信任的某个页面上，然后在该页面上进行客户端跳转（meta跳转或者javascript跳转）。</li>
+<li>html5草案推荐的<code>rel=&quot;noreferer&quot;</code>属性，可以让请求不带<code>referer</code></li>
+</ul>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"http://xxx.com"</span> <span class="attr">rel</span>=<span class="string">"noreferer"</span>&gt;</span>noreferer<span class="tag">&lt;/<span class="name">a</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+    <footer class="article-footer">
+      
+        <a data-url="http://hushicai.github.io/2014/02/09/referer-fang-hu-cuo-shi.html" data-id="cjjbk4w89000lorv98fwbw3hu" class="article-share-link" data-share="baidu">share</a>
+      
+
+      
+        <a href="http://hushicai.github.io/2014/02/09/referer-fang-hu-cuo-shi.html#disqus_thread" class="article-comment-link">comments</a>
+      
+
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-web-qian-duan-jin-zhi-chang-shi" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2014/02/07/web-qian-duan-jin-zhi-chang-shi.html" class="article-date">
+  <time datetime="2014-02-06T16:00:00.000Z" itemprop="datePublished">2014-02-07</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2014/02/07/web-qian-duan-jin-zhi-chang-shi.html">web前端进制常识</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>在前端领域，无论是HTML、css或者js，我们常常会看见一些八进制、十进制、十六进制等表示的字符。</p>
+<h3 id="html中字符进制编码"><a href="#html中字符进制编码" class="headerlink" title="html中字符进制编码"></a>html中字符进制编码</h3><p>在html代码中，我们常常会见到以下字符表示法：</p>
+<ul>
+<li><code>&amp;#56;</code>，十进制表示法</li>
+<li><code>&amp;#x5a;</code>，十六进制表示法，比十进制表示法多了个x</li>
+</ul>
+<h3 id="css中字符进制编码"><a href="#css中字符进制编码" class="headerlink" title="css中字符进制编码"></a>css中字符进制编码</h3><p>在css代码中，常见的进制表示法有：</p>
+<ul>
+<li><code>\6c</code>，十六进制表示法</li>
+</ul>
+<h3 id="js中字符进制编码"><a href="#js中字符进制编码" class="headerlink" title="js中字符进制编码"></a>js中字符进制编码</h3><p>在js代码中，常见的进制表示法有：</p>
+<ul>
+<li><code>\56</code>，八进制表示法</li>
+<li><code>\x5c</code>，十六进制表示法</li>
+<li><code>\u7801</code>，多字节字符的unicode表示法</li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      
+        <a data-url="http://hushicai.github.io/2014/02/07/web-qian-duan-jin-zhi-chang-shi.html" data-id="cjjbk4w87000korv9irmxmu8o" class="article-share-link" data-share="baidu">share</a>
+      
+
+      
+        <a href="http://hushicai.github.io/2014/02/07/web-qian-duan-jin-zhi-chang-shi.html#disqus_thread" class="article-comment-link">comments</a>
+      
+
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-ajax-shu-ju-jie-kou-de-xss-feng-xian" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2014/02/07/ajax-shu-ju-jie-kou-de-xss-feng-xian.html" class="article-date">
+  <time datetime="2014-02-06T16:00:00.000Z" itemprop="datePublished">2014-02-07</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2014/02/07/ajax-shu-ju-jie-kou-de-xss-feng-xian.html">ajax数据接口的xss风险</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>曾经做过一个网站，用xss漏洞扫描器发现了xss漏洞，查看扫描报告，发现是一个ajax数据接口产生的。</p>
+<p>该ajax数据接口中存在类似如下的代码：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    <span class="string">"a"</span>: <span class="string">"&lt;div&gt;xxxx&lt;/div&gt;"</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>其中xxx数据是来自ajax提交上来的get参数。由于后端没有过滤非法字符，导致了反射型xss漏洞。</p>
+<p>最简单直接的解决方法当然就是过滤特殊字符了，但是过滤并不能保证万无一失。</p>
+<p>其实还有更靠谱的解决方法：如果在浏览器上直接访问该ajax接口，应该避免以HTML的方式来呈现返回结果。</p>
+<p>这就得设置一个正确的content-type了。</p>
+<p>该接口原本设置的content-type为<code>text/javascript</code>，但这种content-type在firefox、chrome下还是会解析数据中的HTML代码。</p>
+<p>其实，正确的content-type应该为<code>application/json</code>。</p>
+<p>不过就算这么设置，在IE下还是有可能会造成xss。</p>
+<p>如果我们直接增加一个URL参数为a.html，IE会很奇葩地认为这是一个HTML文件而忽略content-type，使用HTML来解析文件，比如这样：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">foo.cgi?id=123&amp;a.html</span><br><span class="line">/index.php/a.html?id=123（mvc单点入口，会忽略a.html，直接请求index.php）</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+    <footer class="article-footer">
+      
+        <a data-url="http://hushicai.github.io/2014/02/07/ajax-shu-ju-jie-kou-de-xss-feng-xian.html" data-id="cjjbk4w85000horv9d5h0f757" class="article-share-link" data-share="baidu">share</a>
+      
+
+      
+        <a href="http://hushicai.github.io/2014/02/07/ajax-shu-ju-jie-kou-de-xss-feng-xian.html#disqus_thread" class="article-comment-link">comments</a>
+      
+
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-html-yu-javascript-zi-dong-jie-ma" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2014/02/06/html-yu-javascript-zi-dong-jie-ma.html" class="article-date">
+  <time datetime="2014-02-05T16:00:00.000Z" itemprop="datePublished">2014-02-06</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2014/02/06/html-yu-javascript-zi-dong-jie-ma.html">HTML与JavaScript自动解码</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>HTML编码字符分为两种表达形式：</p>
+<ul>
+<li><code>&amp;#xx;</code>，xx为十进制数值</li>
+<li>实体编码，比如<code>&amp;gt;</code>等字符</li>
+</ul>
+<p>这些字符在不同的上下文中具有不同的表现形式。</p>
+<h3 id="在HTML上下文中"><a href="#在HTML上下文中" class="headerlink" title="在HTML上下文中"></a>在HTML上下文中</h3><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">type</span>=<span class="string">"text/javascript"</span>&gt;</span><span class="undefined"></span></span><br><span class="line"><span class="javascript"><span class="function"><span class="keyword">function</span> <span class="title">HtmlEncode</span>(<span class="params">s</span>) </span>&#123;</span></span><br><span class="line"><span class="javascript">    <span class="keyword">return</span> <span class="built_in">String</span>(s)</span></span><br><span class="line"><span class="javascript">        .replace(<span class="regexp">/&amp;/g</span>, <span class="string">'&amp;amp;'</span>)</span></span><br><span class="line"><span class="javascript">        .replace(<span class="regexp">/&lt;/g</span>, <span class="string">'&amp;lt;'</span>)</span></span><br><span class="line"><span class="javascript">        .replace(<span class="regexp">/&gt;/g</span>, <span class="string">'&amp;gt;'</span>)</span></span><br><span class="line"><span class="javascript">        .replace(<span class="regexp">/"/g</span>, <span class="string">'&amp;quot;'</span>);</span></span><br><span class="line"><span class="undefined">&#125;</span></span><br><span class="line"><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="comment">&lt;!-- 样例1--&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"button"</span> <span class="attr">value</span>=<span class="string">"exec1"</span> <span class="attr">onclick</span>=<span class="string">"document.write('&lt;img src=@ onerror=alert(123) /&gt;')"</span> /&gt;</span></span><br><span class="line"><span class="comment">&lt;!-- 样例2--&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"button"</span> <span class="attr">value</span>=<span class="string">"exec2"</span> <span class="attr">onclick</span>=<span class="string">"document.write('&amp;lt;img src=@ onerror=alert(123) /&amp;gt;')"</span> /&gt;</span></span><br><span class="line"><span class="comment">&lt;!-- 样例3--&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"button"</span> <span class="attr">value</span>=<span class="string">"exec3"</span> <span class="attr">onclick</span>=<span class="string">"document.write(HtmlEncode(('&lt;img src=@ onerror=alert(123) /&gt;'))"</span> /&gt;</span></span><br></pre></td></tr></table></figure>
+<p>这种上下文中，HTML编码字符会自动解码！上述样例1、样例2的执行结果是一样的。</p>
+<p>要想避免自动解码问题，可以使用类似样例3的方法。</p>
+        
+          <p class="article-more-link">
+            <a href="/2014/02/06/html-yu-javascript-zi-dong-jie-ma.html#more">阅读全文</a>
+          </p>
+        
+      
+    </div>
+    <footer class="article-footer">
+      
+        <a data-url="http://hushicai.github.io/2014/02/06/html-yu-javascript-zi-dong-jie-ma.html" data-id="cjjbk4w86000jorv9pnav3dua" class="article-share-link" data-share="baidu">share</a>
+      
+
+      
+        <a href="http://hushicai.github.io/2014/02/06/html-yu-javascript-zi-dong-jie-ma.html#disqus_thread" class="article-comment-link">comments</a>
+      
+
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-kua-yu-zi-ye-mian-ke-yi-xiu-gai-fu-ye-mian-de-location" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2014/01/05/kua-yu-zi-ye-mian-ke-yi-xiu-gai-fu-ye-mian-de-location.html" class="article-date">
+  <time datetime="2014-01-04T16:00:00.000Z" itemprop="datePublished">2014-01-05</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2014/01/05/kua-yu-zi-ye-mian-ke-yi-xiu-gai-fu-ye-mian-de-location.html">跨域子页面可以修改父页面的location</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>假设父页面localhost:8084/1.html用iframe嵌入了localhost:8085/2.html:</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">iframe</span> <span class="attr">src</span>=<span class="string">"http://localhost:8085/2.html"</span>&gt;</span><span class="tag">&lt;/<span class="name">iframe</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>2.html页面内容如下：</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="undefined"></span></span><br><span class="line"><span class="javascript">    <span class="comment">// console.log(parent.location);</span></span></span><br><span class="line"><span class="javascript">    parent.location = <span class="string">"http://www.baidu.com"</span>;</span></span><br><span class="line"><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>访问1.html时，页面会直接跳走到百度首页。</p>
+<p>由此可见，跨域的子页面是可以修改父页面的location，但是却不能读取父页面的location，跨域读取的时候，会直接抛DOMException。</p>
+<p>查了一下相关文档，location作为一种资源，跨域的时候可以修改但不能读取！</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      
+        <a data-url="http://hushicai.github.io/2014/01/05/kua-yu-zi-ye-mian-ke-yi-xiu-gai-fu-ye-mian-de-location.html" data-id="cjjbk4w84000forv9agt43kno" class="article-share-link" data-share="baidu">share</a>
+      
+
+      
+        <a href="http://hushicai.github.io/2014/01/05/kua-yu-zi-ye-mian-ke-yi-xiu-gai-fu-ye-mian-de-location.html#disqus_thread" class="article-comment-link">comments</a>
+      
+
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-rang-xcode-zhong-xin-xian-shi-huan-ying-jie-mian" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2013/11/01/rang-xcode-zhong-xin-xian-shi-huan-ying-jie-mian.html" class="article-date">
+  <time datetime="2013-10-31T16:00:00.000Z" itemprop="datePublished">2013-11-01</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2013/11/01/rang-xcode-zhong-xin-xian-shi-huan-ying-jie-mian.html">让xcode重新显示欢迎界面</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>RT，不小心将不显示xcode欢迎界面给勾选了，结果每次打开xcode都看不到界面，还以为没有启动成功。</p>
+<p>在Dock上点一下xcode图标，让xcode窗口获得瞧点。然后<code>command+shift+1</code>就可以重新显示了!</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      
+        <a data-url="http://hushicai.github.io/2013/11/01/rang-xcode-zhong-xin-xian-shi-huan-ying-jie-mian.html" data-id="cjjbk4w82000corv9c7podv9k" class="article-share-link" data-share="baidu">share</a>
+      
+
+      
+        <a href="http://hushicai.github.io/2013/11/01/rang-xcode-zhong-xin-xian-shi-huan-ying-jie-mian.html#disqus_thread" class="article-comment-link">comments</a>
+      
+
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-mac-os-x-xia-nginx-kai-ji-zi-qi-dong" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2013/09/21/mac-os-x-xia-nginx-kai-ji-zi-qi-dong.html" class="article-date">
+  <time datetime="2013-09-20T16:00:00.000Z" itemprop="datePublished">2013-09-21</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2013/09/21/mac-os-x-xia-nginx-kai-ji-zi-qi-dong.html">mac os x下nginx开机自启动</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>按照apple developer官网所说的，用户的开机自启动任务一般都需要在以下目录建立一个plist文件：</p>
+<ul>
+<li>/Library/LaunchDaemons/</li>
+<li>/Library/LaunchAgents/</li>
+<li>~/Library/LaunchAgents/</li>
+</ul>
+<p>这次我们在<code>/Library/LaunchDaemons</code>下新建一个<code>nginx.plist</code>文件：</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">&lt;?xml version="1.0" encoding="UTF-8"?&gt;</span><br><span class="line"><span class="meta">&lt;!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd"&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">plist</span> <span class="attr">version</span>=<span class="string">"1.0"</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">dict</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">key</span>&gt;</span>Label<span class="tag">&lt;/<span class="name">key</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">string</span>&gt;</span>nginx<span class="tag">&lt;/<span class="name">string</span>&gt;</span></span><br><span class="line"></span><br><span class="line">    <span class="tag">&lt;<span class="name">key</span>&gt;</span>Program<span class="tag">&lt;/<span class="name">key</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">string</span>&gt;</span>/usr/local/nginx/sbin/nginx<span class="tag">&lt;/<span class="name">string</span>&gt;</span></span><br><span class="line"></span><br><span class="line">    <span class="tag">&lt;<span class="name">key</span>&gt;</span>KeepAlive<span class="tag">&lt;/<span class="name">key</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">true</span>/&gt;</span></span><br><span class="line"></span><br><span class="line">    <span class="tag">&lt;<span class="name">key</span>&gt;</span>NetworkState<span class="tag">&lt;/<span class="name">key</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">true</span>/&gt;</span></span><br><span class="line"></span><br><span class="line">    <span class="tag">&lt;<span class="name">key</span>&gt;</span>LaunchOnlyOnce<span class="tag">&lt;/<span class="name">key</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">true</span>/&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">dict</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">plist</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>然后加载：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">launchctl load /Library/LaunchDaemons/nginx.plist</span><br></pre></td></tr></table></figure>
+<p>这样就大功告成了！</p>
+<p>同理，php-fpm的开机启动也可以这么做！</p>
+<p>参考文档：</p>
+<ul>
+<li><a href="https://developer.apple.com/library/Mac/documentation/MacOSX/Conceptual/BPSystemStartup/Chapters/CreatingLaunchdJobs.html" target="_blank" rel="noopener">https://developer.apple.com/library/Mac/documentation/MacOSX/Conceptual/BPSystemStartup/Chapters/CreatingLaunchdJobs.html</a></li>
+<li><a href="http://wiki.nginx.org/OSX_launchd" target="_blank" rel="noopener">http://wiki.nginx.org/OSX_launchd</a></li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      
+        <a data-url="http://hushicai.github.io/2013/09/21/mac-os-x-xia-nginx-kai-ji-zi-qi-dong.html" data-id="cjjbk4w80000borv9s0il8cel" class="article-share-link" data-share="baidu">share</a>
+      
+
+      
+        <a href="http://hushicai.github.io/2013/09/21/mac-os-x-xia-nginx-kai-ji-zi-qi-dong.html#disqus_thread" class="article-comment-link">comments</a>
+      
+
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-git-hui-fu-dan-ge-wen-jian" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2013/07/23/git-hui-fu-dan-ge-wen-jian.html" class="article-date">
+  <time datetime="2013-07-22T16:00:00.000Z" itemprop="datePublished">2013-07-23</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2013/07/23/git-hui-fu-dan-ge-wen-jian.html">git恢复单个文件</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>如果还未commit，想恢复到remote repo上的最新文件，则可以这么干：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git checkout -- 文件路径</span><br></pre></td></tr></table></figure>
+<p>这样就会覆盖掉本地修改！</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      
+        <a data-url="http://hushicai.github.io/2013/07/23/git-hui-fu-dan-ge-wen-jian.html" data-id="cjjbk4w83000dorv9i1jwjyvh" class="article-share-link" data-share="baidu">share</a>
+      
+
+      
+        <a href="http://hushicai.github.io/2013/07/23/git-hui-fu-dan-ge-wen-jian.html#disqus_thread" class="article-comment-link">comments</a>
+      
+
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+  
+    <nav id="page-nav">
+      <a class="extend prev" rel="prev" href="/page/4/">&laquo; Prev</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><span class="page-number current">5</span><a class="page-number" href="/page/6/">6</a><a class="extend next" rel="next" href="/page/6/">Next &raquo;</a>
+    </nav>
+  
+</section>
+      
+      <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">categories</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/javascript/">javascript</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/vim/">vim</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/翻译/">翻译</a><span class="category-list-count">1</span></li></ul>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">tags</h3>
+    <div class="widget">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Array/">Array</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Caps-Lock/">Caps Lock</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Ctrl/">Ctrl</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/EventSource/">EventSource</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/File-Api/">File Api</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/FileReader/">FileReader</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/HTML5/">HTML5</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/NodeList/">NodeList</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Start-Render-Time/">Start Render Time</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Time-Of-First-Byte/">Time Of First Byte</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/WebSocket/">WebSocket</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/above-the-fold/">above the fold</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/animation/">animation</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/binary-tree/">binary tree</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/brew/">brew</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/brew-install/">brew install</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/certificate/">certificate</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/chrome/">chrome</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/clipboard/">clipboard</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/color/">color</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/command/">command</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/completion/">completion</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/cursor/">cursor</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/dircolors/">dircolors</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/directory/">directory</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/fail/">fail</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/fixed/">fixed</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/function-declarations/">function declarations</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/function-expressions/">function expressions</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/goagent/">goagent</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/http-proxy/">http_proxy</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/https-proxy/">https_proxy</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ios/">ios</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/javascript/">javascript</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/jquery/">jquery</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/js/">js</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/long-polling/">long polling</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ls/">ls</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/lscolors/">lscolors</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/mac-os-x/">mac os x</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/mac-osx/">mac osx</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/moving/">moving</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/nerdcommenter/">nerdcommenter</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/not-work/">not work</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/oh-my-zsh/">oh-my-zsh</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/open/">open</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/openssl/">openssl</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/parameters/">parameters</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/plugin/">plugin</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/polling/">polling</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/quicksort/">quicksort</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/shell/">shell</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/slice/">slice</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/space/">space</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ssl/">ssl</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/supertab/">supertab</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/svn/">svn</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/tern/">tern</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/token/">token</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ubuntu/">ubuntu</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ultisnips/">ultisnips</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/v8/">v8</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/vim/">vim</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/windows/">windows</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/youcompleteme/">youcompleteme</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/zsh/">zsh</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/二叉树/">二叉树</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/动画原理/">动画原理</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/动画库/">动画库</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/卡住/">卡住</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/命令/">命令</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/命令行/">命令行</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/回滚/">回滚</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/固定定位/">固定定位</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/墙/">墙</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/失效/">失效</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/开始渲染时间/">开始渲染时间</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/快排/">快排</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/快速排序/">快速排序</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/整体架构/">整体架构</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/无法安装/">无法安装</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/服务器推/">服务器推</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/本地文件/">本地文件</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/源代码/">源代码</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/白屏时间/">白屏时间</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/目录/">目录</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/空格/">空格</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/证书错误/">证书错误</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/词法分析/">词法分析</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/重定向/">重定向</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/顺序存储/">顺序存储</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/颜色/">颜色</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/首字节时间/">首字节时间</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/首屏时间/">首屏时间</a><span class="tag-list-count">1</span></li></ul>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">tagcloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/Array/" style="font-size: 10px;">Array</a> <a href="/tags/Caps-Lock/" style="font-size: 10px;">Caps Lock</a> <a href="/tags/Ctrl/" style="font-size: 10px;">Ctrl</a> <a href="/tags/EventSource/" style="font-size: 10px;">EventSource</a> <a href="/tags/File-Api/" style="font-size: 10px;">File Api</a> <a href="/tags/FileReader/" style="font-size: 10px;">FileReader</a> <a href="/tags/HTML5/" style="font-size: 10px;">HTML5</a> <a href="/tags/NodeList/" style="font-size: 10px;">NodeList</a> <a href="/tags/Start-Render-Time/" style="font-size: 10px;">Start Render Time</a> <a href="/tags/Time-Of-First-Byte/" style="font-size: 10px;">Time Of First Byte</a> <a href="/tags/WebSocket/" style="font-size: 10px;">WebSocket</a> <a href="/tags/above-the-fold/" style="font-size: 10px;">above the fold</a> <a href="/tags/animation/" style="font-size: 10px;">animation</a> <a href="/tags/binary-tree/" style="font-size: 10px;">binary tree</a> <a href="/tags/brew/" style="font-size: 10px;">brew</a> <a href="/tags/brew-install/" style="font-size: 10px;">brew install</a> <a href="/tags/certificate/" style="font-size: 10px;">certificate</a> <a href="/tags/chrome/" style="font-size: 10px;">chrome</a> <a href="/tags/clipboard/" style="font-size: 10px;">clipboard</a> <a href="/tags/color/" style="font-size: 10px;">color</a> <a href="/tags/command/" style="font-size: 10px;">command</a> <a href="/tags/completion/" style="font-size: 10px;">completion</a> <a href="/tags/cursor/" style="font-size: 10px;">cursor</a> <a href="/tags/dircolors/" style="font-size: 10px;">dircolors</a> <a href="/tags/directory/" style="font-size: 10px;">directory</a> <a href="/tags/fail/" style="font-size: 10px;">fail</a> <a href="/tags/fixed/" style="font-size: 10px;">fixed</a> <a href="/tags/function-declarations/" style="font-size: 10px;">function declarations</a> <a href="/tags/function-expressions/" style="font-size: 10px;">function expressions</a> <a href="/tags/goagent/" style="font-size: 10px;">goagent</a> <a href="/tags/http-proxy/" style="font-size: 10px;">http_proxy</a> <a href="/tags/https-proxy/" style="font-size: 10px;">https_proxy</a> <a href="/tags/ios/" style="font-size: 10px;">ios</a> <a href="/tags/javascript/" style="font-size: 10px;">javascript</a> <a href="/tags/jquery/" style="font-size: 15px;">jquery</a> <a href="/tags/js/" style="font-size: 20px;">js</a> <a href="/tags/long-polling/" style="font-size: 10px;">long polling</a> <a href="/tags/ls/" style="font-size: 15px;">ls</a> <a href="/tags/lscolors/" style="font-size: 10px;">lscolors</a> <a href="/tags/mac-os-x/" style="font-size: 10px;">mac os x</a> <a href="/tags/mac-osx/" style="font-size: 15px;">mac osx</a> <a href="/tags/moving/" style="font-size: 10px;">moving</a> <a href="/tags/nerdcommenter/" style="font-size: 10px;">nerdcommenter</a> <a href="/tags/not-work/" style="font-size: 10px;">not work</a> <a href="/tags/oh-my-zsh/" style="font-size: 10px;">oh-my-zsh</a> <a href="/tags/open/" style="font-size: 10px;">open</a> <a href="/tags/openssl/" style="font-size: 10px;">openssl</a> <a href="/tags/parameters/" style="font-size: 10px;">parameters</a> <a href="/tags/plugin/" style="font-size: 10px;">plugin</a> <a href="/tags/polling/" style="font-size: 10px;">polling</a> <a href="/tags/quicksort/" style="font-size: 10px;">quicksort</a> <a href="/tags/shell/" style="font-size: 15px;">shell</a> <a href="/tags/slice/" style="font-size: 10px;">slice</a> <a href="/tags/space/" style="font-size: 10px;">space</a> <a href="/tags/ssl/" style="font-size: 10px;">ssl</a> <a href="/tags/supertab/" style="font-size: 10px;">supertab</a> <a href="/tags/svn/" style="font-size: 15px;">svn</a> <a href="/tags/tern/" style="font-size: 10px;">tern</a> <a href="/tags/token/" style="font-size: 10px;">token</a> <a href="/tags/ubuntu/" style="font-size: 10px;">ubuntu</a> <a href="/tags/ultisnips/" style="font-size: 10px;">ultisnips</a> <a href="/tags/v8/" style="font-size: 15px;">v8</a> <a href="/tags/vim/" style="font-size: 20px;">vim</a> <a href="/tags/windows/" style="font-size: 10px;">windows</a> <a href="/tags/youcompleteme/" style="font-size: 10px;">youcompleteme</a> <a href="/tags/zsh/" style="font-size: 20px;">zsh</a> <a href="/tags/二叉树/" style="font-size: 10px;">二叉树</a> <a href="/tags/动画原理/" style="font-size: 10px;">动画原理</a> <a href="/tags/动画库/" style="font-size: 10px;">动画库</a> <a href="/tags/卡住/" style="font-size: 10px;">卡住</a> <a href="/tags/命令/" style="font-size: 10px;">命令</a> <a href="/tags/命令行/" style="font-size: 10px;">命令行</a> <a href="/tags/回滚/" style="font-size: 10px;">回滚</a> <a href="/tags/固定定位/" style="font-size: 10px;">固定定位</a> <a href="/tags/墙/" style="font-size: 10px;">墙</a> <a href="/tags/失效/" style="font-size: 10px;">失效</a> <a href="/tags/开始渲染时间/" style="font-size: 10px;">开始渲染时间</a> <a href="/tags/快排/" style="font-size: 10px;">快排</a> <a href="/tags/快速排序/" style="font-size: 10px;">快速排序</a> <a href="/tags/整体架构/" style="font-size: 10px;">整体架构</a> <a href="/tags/无法安装/" style="font-size: 10px;">无法安装</a> <a href="/tags/服务器推/" style="font-size: 10px;">服务器推</a> <a href="/tags/本地文件/" style="font-size: 10px;">本地文件</a> <a href="/tags/源代码/" style="font-size: 10px;">源代码</a> <a href="/tags/白屏时间/" style="font-size: 10px;">白屏时间</a> <a href="/tags/目录/" style="font-size: 10px;">目录</a> <a href="/tags/空格/" style="font-size: 10px;">空格</a> <a href="/tags/证书错误/" style="font-size: 10px;">证书错误</a> <a href="/tags/词法分析/" style="font-size: 10px;">词法分析</a> <a href="/tags/重定向/" style="font-size: 10px;">重定向</a> <a href="/tags/顺序存储/" style="font-size: 10px;">顺序存储</a> <a href="/tags/颜色/" style="font-size: 10px;">颜色</a> <a href="/tags/首字节时间/" style="font-size: 10px;">首字节时间</a> <a href="/tags/首屏时间/" style="font-size: 10px;">首屏时间</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">archive</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/01/">一月 2016</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/10/">十月 2015</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/09/">九月 2015</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/05/">五月 2015</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/04/">四月 2015</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/12/">十二月 2014</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/08/">八月 2014</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/04/">四月 2014</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/03/">三月 2014</a><span class="archive-list-count">11</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/02/">二月 2014</a><span class="archive-list-count">14</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/01/">一月 2014</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/11/">十一月 2013</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/09/">九月 2013</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/07/">七月 2013</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/06/">六月 2013</a><span class="archive-list-count">1</span></li></ul>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">recent_posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2016/01/08/rang-vim-zhi-chi-clipboard.html">让vim支持`+clipboard`</a>
+          </li>
+        
+          <li>
+            <a href="/2016/01/08/ls-mu-lu-yan-se.html">ls目录颜色</a>
+          </li>
+        
+          <li>
+            <a href="/2016/01/07/win7-jiang-CapsLock-ying-she-wei-Ctrl.html">win7将CapsLock映射为Ctrl</a>
+          </li>
+        
+          <li>
+            <a href="/2015/10/09/python-interative-mode-tab-completion.html">让python在交互模式下支持tab completion</a>
+          </li>
+        
+          <li>
+            <a href="/2015/09/15/git-she-zhi-global-ignore.html">git设置global ignore</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+    
+
+  
+</aside>
+      
+    </div>
+    <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2018 hushicai<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>.
+    </div>
+  </div>
+</footer>
+
+  </div>
+  <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+    <a href="https://github.com/hushicai" class="mobile-nav-link">Github</a>
+  
+</nav>
+  <!-- totop start -->
+<div id="totop">
+<a title="totop"><img src="/img/scrollup.png"/></a>
+</div>
+
+<!-- totop end -->
+
+<!-- disqus start -->
+
+<!-- disqus end -->
+
+<!-- 百度分享 start -->
+
+<div id="article-share-box" class="article-share-box">
+  <div id="bdshare" class="bdsharebuttonbox article-share-links">
+    <a class="article-share-weibo" data-cmd="tsina" title="分享到新浪微博"></a>
+    <a class="article-share-weixin" data-cmd="weixin" title="分享到微信"></a>
+    <a class="article-share-qq" data-cmd="sqq" title="分享到QQ"></a>
+    <a class="article-share-renren" data-cmd="renren" title="分享到人人网"></a>
+    <a class="article-share-more" data-cmd="more" title="更多"></a>
+  </div>
+</div>
+<script>window._bd_share_config={"common":{},"share":{"bdCustomStyle":"/css/bdshare.css"}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?cdnversion='+~(-new Date()/36e5)];</script>
+
+<!-- 百度分享 end -->
+
+<script src="http://libs.baidu.com/jquery/1.9.1/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+
+<script src="/js/script.js"></script>
+
+<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "//hm.baidu.com/hm.js?eebaea29f083e5cc508252c0f12389ef";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
+</div>
+</body>
+</html>

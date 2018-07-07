@@ -1,0 +1,821 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>前端志</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  
+    <link rel="alternative" href="/atom.xml" title="前端志" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.ico">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  <!--[if lt IE 9]><script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7/html5shiv.min.js"></script><![endif]-->
+</head>
+
+<body>
+<div id="container">
+  <div id="wrap">
+    <header id="header">
+  <div id="header-outer" class="outer">
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+          <a class="main-nav-link" href="https://github.com/hushicai">Github</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+          <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://hushicai.github.io"></form>
+      </div>
+    </div>
+  </div>
+</header>
+
+    <div class="outer">
+      <section id="main">
+  
+    <article id="post-my-vim-completion-setting" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2015/04/24/my-vim-completion-setting.html" class="article-date">
+  <time datetime="2015-04-23T16:00:00.000Z" itemprop="datePublished">2015-04-24</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/vim/">vim</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2015/04/24/my-vim-completion-setting.html">my vim completion setting</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>本人从事web前端开发，一直用vim作为开发工具。</p>
+<p>最近一直在折腾completion这事，先后尝试了<code>youcompleteme</code>、<code>neocomplete</code>等工具，甚至直接使用vim内置的<code>ins-completion</code>，不过都不尽人意。</p>
+<p>一顿折腾之后，总算弄了一套自己用着还算顺手的配置。</p>
+<p>我期望completion可以干以下这些事</p>
+<ul>
+<li>标识符补全</li>
+<li>智能补全（omni completion）</li>
+<li>路径补全</li>
+<li>snippets</li>
+</ul>
+<p>这些补全其实<code>ins-completion</code>已经可以搞定了，但是比较费劲，<code>&lt;c-x&gt;&lt;c-o&gt;</code>、<code>&lt;c-x&gt;&lt;c-f&gt;</code>…好多按键…</p>
+<p>所以有了<code>youcompleteme</code>、<code>neocomplete</code>等工具。</p>
+<p>试用了一番，<code>neocomplete</code>比较卡，放弃了，最后选择了<code>youcompleteme</code>。</p>
+<h2 id="youcompleteme"><a href="#youcompleteme" class="headerlink" title="youcompleteme"></a>youcompleteme</h2><p>基本配置如下：</p>
+<figure class="highlight vim"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> <span class="variable">g:ycm_min_num_of_chars_for_completion</span> = <span class="number">3</span> </span><br><span class="line"><span class="keyword">let</span> <span class="variable">g:ycm_autoclose_preview_window_after_completion</span>=<span class="number">1</span></span><br><span class="line"><span class="keyword">let</span> <span class="variable">g:ycm_complete_in_comments</span> = <span class="number">1</span></span><br><span class="line"><span class="keyword">let</span> <span class="variable">g:ycm_key_list_select_completion</span> = [<span class="string">'&lt;tab&gt;'</span>, <span class="string">'&lt;c-n&gt;'</span>, <span class="string">'&lt;Down&gt;'</span>]</span><br><span class="line"><span class="keyword">let</span> <span class="variable">g:ycm_key_list_previous_completion</span> = [<span class="string">'&lt;c-p&gt;'</span>, <span class="string">'&lt;Up&gt;'</span>]</span><br><span class="line"><span class="keyword">let</span> <span class="variable">g:ycm_confirm_extra_conf</span> = <span class="number">0</span></span><br></pre></td></tr></table></figure>
+        
+          <p class="article-more-link">
+            <a href="/2015/04/24/my-vim-completion-setting.html#more">阅读全文</a>
+          </p>
+        
+      
+    </div>
+    <footer class="article-footer">
+      
+        <a data-url="http://hushicai.github.io/2015/04/24/my-vim-completion-setting.html" data-id="cjjbk4w9i0020orv96ezij3rn" class="article-share-link" data-share="baidu">share</a>
+      
+
+      
+        <a href="http://hushicai.github.io/2015/04/24/my-vim-completion-setting.html#disqus_thread" class="article-comment-link">comments</a>
+      
+
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/completion/">completion</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/supertab/">supertab</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/tern/">tern</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/ultisnips/">ultisnips</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/vim/">vim</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/youcompleteme/">youcompleteme</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-fu-wu-qi-tui-ji-shu-zhi-eventsource" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2014/12/02/fu-wu-qi-tui-ji-shu-zhi-eventsource.html" class="article-date">
+  <time datetime="2014-12-01T16:00:00.000Z" itemprop="datePublished">2014-12-02</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2014/12/02/fu-wu-qi-tui-ji-shu-zhi-eventsource.html">服务器推技术之EventSource</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>最近在看服务器推技术时，发现了一项新的技术：<strong>EventSource</strong>。</p>
+<p>w3c上有个草案描述了它：<a href="http://dev.w3.org/html5/eventsource/" target="_blank" rel="noopener">Server-Send Events</a>。</p>
+<p>回想一下我们之前用到的服务器推技术：</p>
+<ul>
+<li><code>polling</code>：客户端不断轮询。</li>
+<li><code>long polling</code>：服务端在数据未就绪时，挂起请求。</li>
+</ul>
+<p>这两种技术都存在一定的局限，我们需要服务器主动推送数据。</p>
+<p>于是有了<code>WebSocket</code>，但它是双向的（服务端&lt;——&gt;客户端）。</p>
+<p>有的时候，我们并不需要从客户端发送消息，我们只需要从服务端推送消息，<code>EventSource</code>应运而生。</p>
+<p><code>EventSource</code>是单向的（服务端——&gt;客户端），它直接使用http协议来传输数据（与<code>WebSocket</code>不同，<code>EventSource</code>不需要专门的协议）。</p>
+        
+          <p class="article-more-link">
+            <a href="/2014/12/02/fu-wu-qi-tui-ji-shu-zhi-eventsource.html#more">阅读全文</a>
+          </p>
+        
+      
+    </div>
+    <footer class="article-footer">
+      
+        <a data-url="http://hushicai.github.io/2014/12/02/fu-wu-qi-tui-ji-shu-zhi-eventsource.html" data-id="cjjbk4w9g001yorv9xb9dix8p" class="article-share-link" data-share="baidu">share</a>
+      
+
+      
+        <a href="http://hushicai.github.io/2014/12/02/fu-wu-qi-tui-ji-shu-zhi-eventsource.html#disqus_thread" class="article-comment-link">comments</a>
+      
+
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/EventSource/">EventSource</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/WebSocket/">WebSocket</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/long-polling/">long polling</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/polling/">polling</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/服务器推/">服务器推</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-jiang-nodelist-zhuan-cheng-array" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2014/12/01/jiang-nodelist-zhuan-cheng-array.html" class="article-date">
+  <time datetime="2014-11-30T16:00:00.000Z" itemprop="datePublished">2014-12-01</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2014/12/01/jiang-nodelist-zhuan-cheng-array.html">将NodeList转成Array</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p><code>NodeList</code>是一个Dom概念，其定义如下：</p>
+<pre><code>interface NodeList {
+    Node               item(in unsigned long index);
+    readonly attribute unsigned long    length;
+};
+</code></pre><p>它有一个方法和一个属性，可以通过<code>item</code>方法来获得指定的元素：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">nodeList.item(<span class="number">1</span>);</span><br></pre></td></tr></table></figure>
+<p>也可以像数组一样，用下标来访问：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">nodeList[<span class="number">1</span>];</span><br></pre></td></tr></table></figure>
+<p>但它不是数组，其原型链如下：</p>
+<pre><code>myNodeList ——&gt; NodeList.prototype ——&gt; Object.prototype ——&gt; null
+</code></pre><p>而数组的原型链则为：</p>
+<pre><code>myArray ——&gt; Array.prototype ——&gt; Object.prototype ——&gt; null
+</code></pre><p><code>NodeList</code>没有数组的那些方法，对它进行遍历不是很方便，我们得先把它转成数组。</p>
+<p>借助<code>call</code>以及<code>Array.prototype.slice</code>可以做到：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> myArray = <span class="built_in">Array</span>.prototype.slice.call(myNodeList);</span><br></pre></td></tr></table></figure>
+<p><code>call</code>是把<code>Array.prototype</code>中的<code>this</code>指向myNodeList，<code>slice</code>方法要求this所指的对象有一个length参数，而刚好<code>NodeList</code>就有。</p>
+<p><code>Array.prototype.slice</code>具体如何工作的，参见<a href="http://www.ecma-international.org/ecma-262/5.1/#sec-15.4.4.10" target="_blank" rel="noopener">ecma</a>。</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      
+        <a data-url="http://hushicai.github.io/2014/12/01/jiang-nodelist-zhuan-cheng-array.html" data-id="cjjbk4w9f001xorv9ipcwibpa" class="article-share-link" data-share="baidu">share</a>
+      
+
+      
+        <a href="http://hushicai.github.io/2014/12/01/jiang-nodelist-zhuan-cheng-array.html#disqus_thread" class="article-comment-link">comments</a>
+      
+
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Array/">Array</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/NodeList/">NodeList</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/slice/">slice</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-nerdcommenter-zhu-shi-fu-hou-tian-jia-kong-ge" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2014/08/20/nerdcommenter-zhu-shi-fu-hou-tian-jia-kong-ge.html" class="article-date">
+  <time datetime="2014-08-19T16:00:00.000Z" itemprop="datePublished">2014-08-20</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2014/08/20/nerdcommenter-zhu-shi-fu-hou-tian-jia-kong-ge.html">nerdcommenter注释符后添加空格</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>在vim中使用nerdcommenter注释时，我们一般用<code>&lt;leader&gt;c&lt;space&gt;</code>来自动添加或者去掉注释。</p>
+<p>假设代码如下：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> name = <span class="string">"hushicai"</span>;</span><br></pre></td></tr></table></figure>
+<p>将鼠标移到该行代码上，用<code>&lt;leader&gt;c&lt;space&gt;</code>进行注释，注释后应该是这样的：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//var name = "hushicai";</span></span><br></pre></td></tr></table></figure>
+<p>然而，这可能会不符合某些团队的代码规范，比如我们团队，进行jshint之后，会提示这样的warning：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">edp WARN → line 1, col 0: Missing space after line comment</span><br></pre></td></tr></table></figure>
+<p>意思就是要在单行注释的注释分隔符后面加个空格：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// var name = "hushicai";</span></span><br></pre></td></tr></table></figure>
+<p>好吧，既然是规范，那我就不得不遵守了。</p>
+<p>看了一眼nerdcommenter的文档，发现有这么一个配置可以解决问题：</p>
+<figure class="highlight vim"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> NERDSpaceDelims=<span class="number">1</span></span><br></pre></td></tr></table></figure>
+<p>ok，现在我们再使用<code>&lt;leader&gt;c&lt;space&gt;</code>进行自动注释，就可以按照规范在注释符后加一个空格了。</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      
+        <a data-url="http://hushicai.github.io/2014/08/20/nerdcommenter-zhu-shi-fu-hou-tian-jia-kong-ge.html" data-id="cjjbk4w9c001uorv9niydh5kv" class="article-share-link" data-share="baidu">share</a>
+      
+
+      
+        <a href="http://hushicai.github.io/2014/08/20/nerdcommenter-zhu-shi-fu-hou-tian-jia-kong-ge.html#disqus_thread" class="article-comment-link">comments</a>
+      
+
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/nerdcommenter/">nerdcommenter</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/space/">space</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/空格/">空格</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-ios-fixed-ding-wei-wen-ti" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2014/08/19/ios-fixed-ding-wei-wen-ti.html" class="article-date">
+  <time datetime="2014-08-18T16:00:00.000Z" itemprop="datePublished">2014-08-19</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2014/08/19/ios-fixed-ding-wei-wen-ti.html">ios fixed定位问题</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>在ios5之前，我们如果要实现fixed导航条，我们得依赖iscroll来支持。</p>
+<p>不过从ios5.1以来，fixed定位就已经支持了，但很遗憾，ios现在对它还只是半支持。</p>
+<p>在大部分情况下，fixed表现得没有什么问题。</p>
+<img src="/2014/08/19/ios-fixed-ding-wei-wen-ti/1.png">
+<p>但是在某些情况下，会出现一些比较奇葩的问题，比如fixed元素中存在输入框子元素，这个时候就会跪了。</p>
+        
+          <p class="article-more-link">
+            <a href="/2014/08/19/ios-fixed-ding-wei-wen-ti.html#more">阅读全文</a>
+          </p>
+        
+      
+    </div>
+    <footer class="article-footer">
+      
+        <a data-url="http://hushicai.github.io/2014/08/19/ios-fixed-ding-wei-wen-ti.html" data-id="cjjbk4w9e001vorv90o2wpkn8" class="article-share-link" data-share="baidu">share</a>
+      
+
+      
+        <a href="http://hushicai.github.io/2014/08/19/ios-fixed-ding-wei-wen-ti.html#disqus_thread" class="article-comment-link">comments</a>
+      
+
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/fixed/">fixed</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/ios/">ios</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/固定定位/">固定定位</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-v8-de-ci-fa-fen-xi" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2014/08/13/v8-de-ci-fa-fen-xi.html" class="article-date">
+  <time datetime="2014-08-12T16:00:00.000Z" itemprop="datePublished">2014-08-13</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2014/08/13/v8-de-ci-fa-fen-xi.html">v8的词法分析</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>本文将探讨v8是如何对utf8编码的js文件进行词法分析的！</p>
+<h2 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h2><p>v8提供了一个<code>Scanner</code>类作为词法分析器，在该类中有这么一个指针：</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Utf16CharacterStream* stream_;</span><br></pre></td></tr></table></figure>
+<p>这是个啥玩意？看一下源代码中对这个类的解释：</p>
+<blockquote>
+<p>// Buffered stream of UTF-16 code units, using an internal UTF-16 buffer.</p>
+</blockquote>
+<p>大概就是说，<code>Utf16CharacterStream</code>就是一个<strong>UTF-16代码单元</strong>的缓冲流。</p>
+<p>啥是<strong>代码单元</strong>？v8的解释如下：</p>
+<blockquote>
+<p>// A code unit is a 16 bit value representing either a 16 bit code point<br>// or one part of a surrogate pair that make a single 21 bit code point.</p>
+</blockquote>
+<p>这就涉及到了unicode规范，在unicode字符集中，每个unicode字符都有一个唯一的<strong>代码点</strong>。</p>
+<p>在utf8、utf16等编码形式中，代码点被映射到一个或者多个代码单元。</p>
+<p>代码单元是各个编码形式中的最小单元，其大小：</p>
+<ul>
+<li>UTF-8 中的代码单元由 8 位组成。</li>
+<li>UTF-16 中的代码单元由 16 位组成。</li>
+</ul>
+<p>每个代码点需要多少个代码单元呢？不同编码形式不一样：</p>
+<ul>
+<li>UTF-8中，每个代码点被映射到一个、两个、三个或者四个代码单元。</li>
+<li>UTF-16中，值小于等于U+FFFF的代码点被映射到单个代码单元中，对于值大于U+FFFF的代码点，每个代码点需要两个代码单元。在UTF-16 中，这些代码单元对有一个独特的术语：“Unicode 代理对”。</li>
+</ul>
+<p>综上，我们可以知道<code>Utf16CharacterStream</code>中每一个UTF-16代码单元的含义：</p>
+<blockquote>
+<p>UTF-16中，一个代码单元要么是一个16位的代码点，要么是“Unicode代理对”中的一半，其中“unicode代码对”是一个21位的代码点。</p>
+</blockquote>
+<p>简而言之，<code>Utf16CharacterStream</code>中的每个代码单元，要么是一个独立的unicode字符，要么是一个unicode字符的一半（和下一个代码单元组合起来才能形成一个unicode字符）。</p>
+<p>v8实际上就是基于utf16对输入字符序列进行词法分析的！这也是Ecmascript规范所要求的：</p>
+<blockquote>
+<p>ECMAScript 源代码文本使用 Unicode 3.0 或更高版本的字符编码的字符序列来表示。<br>符合 ECMAScript 的实现不要求对文本执行正规化，也不要求将其表现为像执行了正规化一样。<br>本规范的目的是假定 ECMAScript 源代码文本都是由16位代码单元组成的序列。<br>像这样包含16位代码单元序列的源文本可能不是有效的 UTF-16 字符编码。<br>如果实际源代码文本没有用16位代码单元形式的编码，那就必须把它看作已经转换为 UTF-16 一样处理。</p>
+</blockquote>
+<p>v8词法分析首先要做的是把输入字符序列转换成utf16 stream。</p>
+<p>那如何把utf8编码的js文件转换成utf16 stream呢？</p>
+        
+          <p class="article-more-link">
+            <a href="/2014/08/13/v8-de-ci-fa-fen-xi.html#more">阅读全文</a>
+          </p>
+        
+      
+    </div>
+    <footer class="article-footer">
+      
+        <a data-url="http://hushicai.github.io/2014/08/13/v8-de-ci-fa-fen-xi.html" data-id="cjjbk4w9a001rorv906x45fym" class="article-share-link" data-share="baidu">share</a>
+      
+
+      
+        <a href="http://hushicai.github.io/2014/08/13/v8-de-ci-fa-fen-xi.html#disqus_thread" class="article-comment-link">comments</a>
+      
+
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/token/">token</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/v8/">v8</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/源代码/">源代码</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/词法分析/">词法分析</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-mac-osx-xia-bian-yi-v8" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2014/08/10/mac-osx-xia-bian-yi-v8.html" class="article-date">
+  <time datetime="2014-08-09T16:00:00.000Z" itemprop="datePublished">2014-08-10</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2014/08/10/mac-osx-xia-bian-yi-v8.html">mac osx下编译v8</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>v8相信大家都不陌生，本文将介绍一下，如何在mac osx下编译v8，并用一个例子来试验编译结果。</p>
+<h2 id="编译"><a href="#编译" class="headerlink" title="编译"></a>编译</h2><p>首先获取一下源代码，v8在github上有镜像，可以直接clone github上的。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git <span class="built_in">clone</span> https://github.com/v8/v8.git</span><br></pre></td></tr></table></figure>
+<p>代码量较大，请耐心等待…</p>
+<p>下载完成后，我们还需要下载编译前的依赖。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">make builddeps</span><br></pre></td></tr></table></figure>
+<p><em>Note: 以上命令都比较悲剧，因为要跨越我朝的墙…建议使用vpn吧，用goagent也可以，不过会很慢。</em></p>
+<p>依赖下载完成之后，我们就可以正式build了：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">make</span><br></pre></td></tr></table></figure>
+<p>更多编译选项，请查看<a href="https://code.google.com/p/v8/wiki/BuildingWithGYP" target="_blank" rel="noopener">官网</a>。</p>
+        
+          <p class="article-more-link">
+            <a href="/2014/08/10/mac-osx-xia-bian-yi-v8.html#more">阅读全文</a>
+          </p>
+        
+      
+    </div>
+    <footer class="article-footer">
+      
+        <a data-url="http://hushicai.github.io/2014/08/10/mac-osx-xia-bian-yi-v8.html" data-id="cjjbk4w9b001sorv9etjd3l6m" class="article-share-link" data-share="baidu">share</a>
+      
+
+      
+        <a href="http://hushicai.github.io/2014/08/10/mac-osx-xia-bian-yi-v8.html#disqus_thread" class="article-comment-link">comments</a>
+      
+
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/mac-osx/">mac osx</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/v8/">v8</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-guan-yu-ye-mian-shou-ping-shi-jian" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2014/04/19/guan-yu-ye-mian-shou-ping-shi-jian.html" class="article-date">
+  <time datetime="2014-04-18T16:00:00.000Z" itemprop="datePublished">2014-04-19</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2014/04/19/guan-yu-ye-mian-shou-ping-shi-jian.html">关于页面首屏时间</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>什么是首屏？英文叫<code>above the fold</code>，google一下<code>above the fold</code>，可以发现在维基百科上有专门的<a href="http://en.wikipedia.org/wiki/Above_the_fold" target="_blank" rel="noopener">条目</a> 。</p>
+<p>正如维基百科上所说，<code>above the fold</code>这个概念最早出现在报纸上，也就是我们通常所说的报纸头条！</p>
+<p>这个概念后来被沿用到web上，web中的<code>above the fold</code>，维基百科是这么解释的:</p>
+<blockquote>
+<p>Above the fold is also used in website design (along with “above the scroll”) to refer to the portion of the webpage<br>that is visible without scrolling. As screen sizes vary drastically there is no set definition for the number of<br>pixels that define the fold. This is because different screen resolutions will show different portions of the website<br>without scrolling. Further complicating matters, many websites adjust their layout based on the size of the browser<br>window, such that the fold is not a static feature of the page.</p>
+</blockquote>
+<p>如上文所说，web中的首屏不同于报纸头条，它的区域是动态的，因为用户的屏幕分辨率是不同的。</p>
+<p>那我们应该怎么确定这个首屏范围呢？这个范围需要根据用户的浏览器分辨率数据来制定。</p>
+<p>在web中，一般我们只需要敲定一个高度，然后得到一条<em>首屏线</em>。</p>
+<p>首屏线以上的内容通常是一个站点想优先展现给用户的东西，它能不能及时展示是能不能留住用户一个非常重要的因素。</p>
+        
+          <p class="article-more-link">
+            <a href="/2014/04/19/guan-yu-ye-mian-shou-ping-shi-jian.html#more">阅读全文</a>
+          </p>
+        
+      
+    </div>
+    <footer class="article-footer">
+      
+        <a data-url="http://hushicai.github.io/2014/04/19/guan-yu-ye-mian-shou-ping-shi-jian.html" data-id="cjjbk4w97001norv92tfgiqa9" class="article-share-link" data-share="baidu">share</a>
+      
+
+      
+        <a href="http://hushicai.github.io/2014/04/19/guan-yu-ye-mian-shou-ping-shi-jian.html#disqus_thread" class="article-comment-link">comments</a>
+      
+
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Start-Render-Time/">Start Render Time</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Time-Of-First-Byte/">Time Of First Byte</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/above-the-fold/">above the fold</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/开始渲染时间/">开始渲染时间</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/白屏时间/">白屏时间</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/首字节时间/">首字节时间</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/首屏时间/">首屏时间</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-mac-osx-ming-ling-xing-xia-li-yong-goagent-zuo-dai-li" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2014/04/08/mac-osx-ming-ling-xing-xia-li-yong-goagent-zuo-dai-li.html" class="article-date">
+  <time datetime="2014-04-07T16:00:00.000Z" itemprop="datePublished">2014-04-08</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2014/04/08/mac-osx-ming-ling-xing-xia-li-yong-goagent-zuo-dai-li.html">mac osx命令行下利用goagent作代理</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>今天在使用brew安装vim7.4时，遭遇了伟大的GFW墙：LuaJit这货总是下载不下来。</p>
+<p>于是就开始找代理了，但是手头上只有goagent，没有vpn，咋整？</p>
+<p>偶然在一篇文章上发现了curl、wget等http应用程序会调用<code>http_proxy</code>和<code>https_proxy</code>这两环境变量进行代理，于是我就尝试设置一下：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">export</span> http_proxy=http://127.0.0.1:8087</span><br><span class="line"><span class="built_in">export</span> https_proxy=<span class="variable">$http_proxy</span></span><br></pre></td></tr></table></figure>
+<p><em>PS：别用<code>ping</code>对以上代理进行测试，不管用。</em></p>
+<p>试着重新安装vim7.4，果然不再被墙，成功下载了！并且在goagent的log上也可以观察到：</p>
+<pre><code>INFO - [Apr  8 16:13:33] 127.0.0.1:60865 &quot;GAE GET http://luajit.org/download/LuaJIT-2.0.3.tar.gz HTTP/1.1&quot; 206 271735 
+</code></pre><p>这说明brew的curl确实使用了我刚才设置的代理。</p>
+<p>大伙可以在<code>~/.zshrc</code>或者<code>~/.bash_profile</code>中添加这样的alias：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">alias</span> goproxy=<span class="string">'export http_proxy=http://127.0.0.1:8087 https_proxy=http://127.0.0.1:8087'</span></span><br><span class="line"><span class="built_in">alias</span> disproxy=<span class="string">'unset http_proxy https_proxy'</span></span><br></pre></td></tr></table></figure>
+<p>这样下次就可以很方便地切换proxy了！</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      
+        <a data-url="http://hushicai.github.io/2014/04/08/mac-osx-ming-ling-xing-xia-li-yong-goagent-zuo-dai-li.html" data-id="cjjbk4w96001lorv9h0lggcim" class="article-share-link" data-share="baidu">share</a>
+      
+
+      
+        <a href="http://hushicai.github.io/2014/04/08/mac-osx-ming-ling-xing-xia-li-yong-goagent-zuo-dai-li.html#disqus_thread" class="article-comment-link">comments</a>
+      
+
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/brew-install/">brew install</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/http-proxy/">http_proxy</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/https-proxy/">https_proxy</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/墙/">墙</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-mac-osx-xia-wu-fa-an-zhuang-brew-wen-ti" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2014/04/07/mac-osx-xia-wu-fa-an-zhuang-brew-wen-ti.html" class="article-date">
+  <time datetime="2014-04-06T16:00:00.000Z" itemprop="datePublished">2014-04-07</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2014/04/07/mac-osx-xia-wu-fa-an-zhuang-brew-wen-ti.html">mac osx下无法安装brew问题</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>今天很倒霉，本来想update brew的，结果update半天没成功，一怒之下把它删了重装，悲剧就从删除时刻开始上演！！！</p>
+<p>捣鼓了一个下午，始终没法重新装上<code>brew</code>，没道理啊，我就按照官网上干的：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ruby -e &quot;$(curl -fsSL https://raw.github.com/Homebrew/homebrew/go/install)&quot;</span><br></pre></td></tr></table></figure>
+<p>但是执行完以上命令之后，却卡住了：</p>
+<ul>
+<li>命令上一直显示<code>Downloading and installing Homebrew...</code></li>
+<li>经过一段漫长的时间后，会出现<code>unable to fetch https://github.com/Homebrew/homebrew.git</code></li>
+</ul>
+<p>研究很久，没有找到原因，直到晚上的时候，发现python的<code>https_open</code>方法也挂了？这就很不寻常了。</p>
+<p>很有可能系统的ssl有问题！查看了系统的<code>openssl</code>版本，发现不是最新的，我当场就决定先更新一下<code>openssl</code>试试。</p>
+        
+          <p class="article-more-link">
+            <a href="/2014/04/07/mac-osx-xia-wu-fa-an-zhuang-brew-wen-ti.html#more">阅读全文</a>
+          </p>
+        
+      
+    </div>
+    <footer class="article-footer">
+      
+        <a data-url="http://hushicai.github.io/2014/04/07/mac-osx-xia-wu-fa-an-zhuang-brew-wen-ti.html" data-id="cjjbk4w94001jorv9hcvs18ze" class="article-share-link" data-share="baidu">share</a>
+      
+
+      
+        <a href="http://hushicai.github.io/2014/04/07/mac-osx-xia-wu-fa-an-zhuang-brew-wen-ti.html#disqus_thread" class="article-comment-link">comments</a>
+      
+
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/brew/">brew</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/mac-osx/">mac osx</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/openssl/">openssl</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/卡住/">卡住</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/无法安装/">无法安装</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+  
+    <nav id="page-nav">
+      <a class="extend prev" rel="prev" href="/">&laquo; Prev</a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><span class="space">&hellip;</span><a class="page-number" href="/page/6/">6</a><a class="extend next" rel="next" href="/page/3/">Next &raquo;</a>
+    </nav>
+  
+</section>
+      
+      <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">categories</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/javascript/">javascript</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/vim/">vim</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/翻译/">翻译</a><span class="category-list-count">1</span></li></ul>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">tags</h3>
+    <div class="widget">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Array/">Array</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Caps-Lock/">Caps Lock</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Ctrl/">Ctrl</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/EventSource/">EventSource</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/File-Api/">File Api</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/FileReader/">FileReader</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/HTML5/">HTML5</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/NodeList/">NodeList</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Start-Render-Time/">Start Render Time</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Time-Of-First-Byte/">Time Of First Byte</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/WebSocket/">WebSocket</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/above-the-fold/">above the fold</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/animation/">animation</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/binary-tree/">binary tree</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/brew/">brew</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/brew-install/">brew install</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/certificate/">certificate</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/chrome/">chrome</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/clipboard/">clipboard</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/color/">color</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/command/">command</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/completion/">completion</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/cursor/">cursor</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/dircolors/">dircolors</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/directory/">directory</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/fail/">fail</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/fixed/">fixed</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/function-declarations/">function declarations</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/function-expressions/">function expressions</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/goagent/">goagent</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/http-proxy/">http_proxy</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/https-proxy/">https_proxy</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ios/">ios</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/javascript/">javascript</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/jquery/">jquery</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/js/">js</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/long-polling/">long polling</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ls/">ls</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/lscolors/">lscolors</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/mac-os-x/">mac os x</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/mac-osx/">mac osx</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/moving/">moving</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/nerdcommenter/">nerdcommenter</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/not-work/">not work</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/oh-my-zsh/">oh-my-zsh</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/open/">open</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/openssl/">openssl</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/parameters/">parameters</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/plugin/">plugin</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/polling/">polling</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/quicksort/">quicksort</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/shell/">shell</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/slice/">slice</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/space/">space</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ssl/">ssl</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/supertab/">supertab</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/svn/">svn</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/tern/">tern</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/token/">token</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ubuntu/">ubuntu</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ultisnips/">ultisnips</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/v8/">v8</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/vim/">vim</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/windows/">windows</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/youcompleteme/">youcompleteme</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/zsh/">zsh</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/二叉树/">二叉树</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/动画原理/">动画原理</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/动画库/">动画库</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/卡住/">卡住</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/命令/">命令</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/命令行/">命令行</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/回滚/">回滚</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/固定定位/">固定定位</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/墙/">墙</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/失效/">失效</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/开始渲染时间/">开始渲染时间</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/快排/">快排</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/快速排序/">快速排序</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/整体架构/">整体架构</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/无法安装/">无法安装</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/服务器推/">服务器推</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/本地文件/">本地文件</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/源代码/">源代码</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/白屏时间/">白屏时间</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/目录/">目录</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/空格/">空格</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/证书错误/">证书错误</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/词法分析/">词法分析</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/重定向/">重定向</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/顺序存储/">顺序存储</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/颜色/">颜色</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/首字节时间/">首字节时间</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/首屏时间/">首屏时间</a><span class="tag-list-count">1</span></li></ul>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">tagcloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/Array/" style="font-size: 10px;">Array</a> <a href="/tags/Caps-Lock/" style="font-size: 10px;">Caps Lock</a> <a href="/tags/Ctrl/" style="font-size: 10px;">Ctrl</a> <a href="/tags/EventSource/" style="font-size: 10px;">EventSource</a> <a href="/tags/File-Api/" style="font-size: 10px;">File Api</a> <a href="/tags/FileReader/" style="font-size: 10px;">FileReader</a> <a href="/tags/HTML5/" style="font-size: 10px;">HTML5</a> <a href="/tags/NodeList/" style="font-size: 10px;">NodeList</a> <a href="/tags/Start-Render-Time/" style="font-size: 10px;">Start Render Time</a> <a href="/tags/Time-Of-First-Byte/" style="font-size: 10px;">Time Of First Byte</a> <a href="/tags/WebSocket/" style="font-size: 10px;">WebSocket</a> <a href="/tags/above-the-fold/" style="font-size: 10px;">above the fold</a> <a href="/tags/animation/" style="font-size: 10px;">animation</a> <a href="/tags/binary-tree/" style="font-size: 10px;">binary tree</a> <a href="/tags/brew/" style="font-size: 10px;">brew</a> <a href="/tags/brew-install/" style="font-size: 10px;">brew install</a> <a href="/tags/certificate/" style="font-size: 10px;">certificate</a> <a href="/tags/chrome/" style="font-size: 10px;">chrome</a> <a href="/tags/clipboard/" style="font-size: 10px;">clipboard</a> <a href="/tags/color/" style="font-size: 10px;">color</a> <a href="/tags/command/" style="font-size: 10px;">command</a> <a href="/tags/completion/" style="font-size: 10px;">completion</a> <a href="/tags/cursor/" style="font-size: 10px;">cursor</a> <a href="/tags/dircolors/" style="font-size: 10px;">dircolors</a> <a href="/tags/directory/" style="font-size: 10px;">directory</a> <a href="/tags/fail/" style="font-size: 10px;">fail</a> <a href="/tags/fixed/" style="font-size: 10px;">fixed</a> <a href="/tags/function-declarations/" style="font-size: 10px;">function declarations</a> <a href="/tags/function-expressions/" style="font-size: 10px;">function expressions</a> <a href="/tags/goagent/" style="font-size: 10px;">goagent</a> <a href="/tags/http-proxy/" style="font-size: 10px;">http_proxy</a> <a href="/tags/https-proxy/" style="font-size: 10px;">https_proxy</a> <a href="/tags/ios/" style="font-size: 10px;">ios</a> <a href="/tags/javascript/" style="font-size: 10px;">javascript</a> <a href="/tags/jquery/" style="font-size: 15px;">jquery</a> <a href="/tags/js/" style="font-size: 20px;">js</a> <a href="/tags/long-polling/" style="font-size: 10px;">long polling</a> <a href="/tags/ls/" style="font-size: 15px;">ls</a> <a href="/tags/lscolors/" style="font-size: 10px;">lscolors</a> <a href="/tags/mac-os-x/" style="font-size: 10px;">mac os x</a> <a href="/tags/mac-osx/" style="font-size: 15px;">mac osx</a> <a href="/tags/moving/" style="font-size: 10px;">moving</a> <a href="/tags/nerdcommenter/" style="font-size: 10px;">nerdcommenter</a> <a href="/tags/not-work/" style="font-size: 10px;">not work</a> <a href="/tags/oh-my-zsh/" style="font-size: 10px;">oh-my-zsh</a> <a href="/tags/open/" style="font-size: 10px;">open</a> <a href="/tags/openssl/" style="font-size: 10px;">openssl</a> <a href="/tags/parameters/" style="font-size: 10px;">parameters</a> <a href="/tags/plugin/" style="font-size: 10px;">plugin</a> <a href="/tags/polling/" style="font-size: 10px;">polling</a> <a href="/tags/quicksort/" style="font-size: 10px;">quicksort</a> <a href="/tags/shell/" style="font-size: 15px;">shell</a> <a href="/tags/slice/" style="font-size: 10px;">slice</a> <a href="/tags/space/" style="font-size: 10px;">space</a> <a href="/tags/ssl/" style="font-size: 10px;">ssl</a> <a href="/tags/supertab/" style="font-size: 10px;">supertab</a> <a href="/tags/svn/" style="font-size: 15px;">svn</a> <a href="/tags/tern/" style="font-size: 10px;">tern</a> <a href="/tags/token/" style="font-size: 10px;">token</a> <a href="/tags/ubuntu/" style="font-size: 10px;">ubuntu</a> <a href="/tags/ultisnips/" style="font-size: 10px;">ultisnips</a> <a href="/tags/v8/" style="font-size: 15px;">v8</a> <a href="/tags/vim/" style="font-size: 20px;">vim</a> <a href="/tags/windows/" style="font-size: 10px;">windows</a> <a href="/tags/youcompleteme/" style="font-size: 10px;">youcompleteme</a> <a href="/tags/zsh/" style="font-size: 20px;">zsh</a> <a href="/tags/二叉树/" style="font-size: 10px;">二叉树</a> <a href="/tags/动画原理/" style="font-size: 10px;">动画原理</a> <a href="/tags/动画库/" style="font-size: 10px;">动画库</a> <a href="/tags/卡住/" style="font-size: 10px;">卡住</a> <a href="/tags/命令/" style="font-size: 10px;">命令</a> <a href="/tags/命令行/" style="font-size: 10px;">命令行</a> <a href="/tags/回滚/" style="font-size: 10px;">回滚</a> <a href="/tags/固定定位/" style="font-size: 10px;">固定定位</a> <a href="/tags/墙/" style="font-size: 10px;">墙</a> <a href="/tags/失效/" style="font-size: 10px;">失效</a> <a href="/tags/开始渲染时间/" style="font-size: 10px;">开始渲染时间</a> <a href="/tags/快排/" style="font-size: 10px;">快排</a> <a href="/tags/快速排序/" style="font-size: 10px;">快速排序</a> <a href="/tags/整体架构/" style="font-size: 10px;">整体架构</a> <a href="/tags/无法安装/" style="font-size: 10px;">无法安装</a> <a href="/tags/服务器推/" style="font-size: 10px;">服务器推</a> <a href="/tags/本地文件/" style="font-size: 10px;">本地文件</a> <a href="/tags/源代码/" style="font-size: 10px;">源代码</a> <a href="/tags/白屏时间/" style="font-size: 10px;">白屏时间</a> <a href="/tags/目录/" style="font-size: 10px;">目录</a> <a href="/tags/空格/" style="font-size: 10px;">空格</a> <a href="/tags/证书错误/" style="font-size: 10px;">证书错误</a> <a href="/tags/词法分析/" style="font-size: 10px;">词法分析</a> <a href="/tags/重定向/" style="font-size: 10px;">重定向</a> <a href="/tags/顺序存储/" style="font-size: 10px;">顺序存储</a> <a href="/tags/颜色/" style="font-size: 10px;">颜色</a> <a href="/tags/首字节时间/" style="font-size: 10px;">首字节时间</a> <a href="/tags/首屏时间/" style="font-size: 10px;">首屏时间</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">archive</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/01/">一月 2016</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/10/">十月 2015</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/09/">九月 2015</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/05/">五月 2015</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/04/">四月 2015</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/12/">十二月 2014</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/08/">八月 2014</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/04/">四月 2014</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/03/">三月 2014</a><span class="archive-list-count">11</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/02/">二月 2014</a><span class="archive-list-count">14</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/01/">一月 2014</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/11/">十一月 2013</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/09/">九月 2013</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/07/">七月 2013</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/06/">六月 2013</a><span class="archive-list-count">1</span></li></ul>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">recent_posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2016/01/08/rang-vim-zhi-chi-clipboard.html">让vim支持`+clipboard`</a>
+          </li>
+        
+          <li>
+            <a href="/2016/01/08/ls-mu-lu-yan-se.html">ls目录颜色</a>
+          </li>
+        
+          <li>
+            <a href="/2016/01/07/win7-jiang-CapsLock-ying-she-wei-Ctrl.html">win7将CapsLock映射为Ctrl</a>
+          </li>
+        
+          <li>
+            <a href="/2015/10/09/python-interative-mode-tab-completion.html">让python在交互模式下支持tab completion</a>
+          </li>
+        
+          <li>
+            <a href="/2015/09/15/git-she-zhi-global-ignore.html">git设置global ignore</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+    
+
+  
+</aside>
+      
+    </div>
+    <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2018 hushicai<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>.
+    </div>
+  </div>
+</footer>
+
+  </div>
+  <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+    <a href="https://github.com/hushicai" class="mobile-nav-link">Github</a>
+  
+</nav>
+  <!-- totop start -->
+<div id="totop">
+<a title="totop"><img src="/img/scrollup.png"/></a>
+</div>
+
+<!-- totop end -->
+
+<!-- disqus start -->
+
+<!-- disqus end -->
+
+<!-- 百度分享 start -->
+
+<div id="article-share-box" class="article-share-box">
+  <div id="bdshare" class="bdsharebuttonbox article-share-links">
+    <a class="article-share-weibo" data-cmd="tsina" title="分享到新浪微博"></a>
+    <a class="article-share-weixin" data-cmd="weixin" title="分享到微信"></a>
+    <a class="article-share-qq" data-cmd="sqq" title="分享到QQ"></a>
+    <a class="article-share-renren" data-cmd="renren" title="分享到人人网"></a>
+    <a class="article-share-more" data-cmd="more" title="更多"></a>
+  </div>
+</div>
+<script>window._bd_share_config={"common":{},"share":{"bdCustomStyle":"/css/bdshare.css"}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?cdnversion='+~(-new Date()/36e5)];</script>
+
+<!-- 百度分享 end -->
+
+<script src="http://libs.baidu.com/jquery/1.9.1/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+
+<script src="/js/script.js"></script>
+
+<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "//hm.baidu.com/hm.js?eebaea29f083e5cc508252c0f12389ef";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
+</div>
+</body>
+</html>

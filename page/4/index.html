@@ -1,0 +1,793 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>前端志</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  
+    <link rel="alternative" href="/atom.xml" title="前端志" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.ico">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  <!--[if lt IE 9]><script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7/html5shiv.min.js"></script><![endif]-->
+</head>
+
+<body>
+<div id="container">
+  <div id="wrap">
+    <header id="header">
+  <div id="header-outer" class="outer">
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+          <a class="main-nav-link" href="https://github.com/hushicai">Github</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+          <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://hushicai.github.io"></form>
+      </div>
+    </div>
+  </div>
+</header>
+
+    <div class="outer">
+      <section id="main">
+  
+    <article id="post-jquery-zheng-ti-jia-gou" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2014/03/02/jquery-zheng-ti-jia-gou.html" class="article-date">
+  <time datetime="2014-03-01T16:00:00.000Z" itemprop="datePublished">2014-03-02</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/javascript/">javascript</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2014/03/02/jquery-zheng-ti-jia-gou.html">jquery整体架构</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>本文将探索jQuery是如何从最简单的问题开始，并逐步实现羽翼渐丰的演变过程，从jQuery核心技术的还原过程来理解jQuery框架的搭建原理。</p>
+<h2 id="原型继承"><a href="#原型继承" class="headerlink" title="原型继承"></a>原型继承</h2><p>在JavaScript中，函数无处不在，它可以归置代码段，把相对独立的功能封装在一个函数包中；它可以作为一个对象；它也可以用来实现类。</p>
+<p>例如，定义一个最初的jQuery类：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> jQuery = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="comment">// ...</span></span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<p>上面定义了一个类，类名叫jQuery，我们可以把它当做一个函数，函数名为jQuery，当然，我们也可以把它当做一个对象，对象名就叫jQuery，在JavaScript，一切都是对象。</p>
+<p>上面定义的是jQuery一个空函数，啥都没做，实际上，这个函数就是面向对象语言中所谓的构造函数，是用来创建类的。</p>
+<p>JavaScript中就是使用function关键字来定义类的，类最基本的特性就是封装、继承、多态等，JavaScript没有extends、implement等关键字，它是通过原型（prototype）来实现的。</p>
+<p>js中的每个函数都具有一个prototype属性（不同于<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">现在我们就来扩展jQuery的原型：</span><br><span class="line"></span><br><span class="line">```javascript</span><br><span class="line">var jQuery = function() &#123;&#125;;</span><br><span class="line">jQuery.prototype = &#123;</span><br><span class="line">    // ...</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure></p>
+<p>如果你觉得jQuery.prototype名称太长，木有关系，你可以为其重新命名，如fn：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">jQuery.fn = jQuery.prototype = &#123;</span><br><span class="line">    <span class="comment">// ...</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>当然，如果你还觉得jQuery名称太长，你也可以给jQuery定义一个别名，比如$：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> $ = jQuery = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;&#125;;</span><br></pre></td></tr></table></figure>
+<p>接下来我们给jQuery的原型对象添加一个方法size和一个属性jquery：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> $ = jQuery = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;&#125;;</span><br><span class="line"></span><br><span class="line">jQuery.fn = jQuery.prototype = &#123;</span><br><span class="line">    jquery: <span class="string">'1.3.2'</span>,</span><br><span class="line">    size: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">this</span>.length;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<p>如何调用这些方法和属性呢？</p>
+        
+          <p class="article-more-link">
+            <a href="/2014/03/02/jquery-zheng-ti-jia-gou.html#more">阅读全文</a>
+          </p>
+        
+      
+    </div>
+    <footer class="article-footer">
+      
+        <a data-url="http://hushicai.github.io/2014/03/02/jquery-zheng-ti-jia-gou.html" data-id="cjjbk4w8n000yorv9wjte3rq8" class="article-share-link" data-share="baidu">share</a>
+      
+
+      
+        <a href="http://hushicai.github.io/2014/03/02/jquery-zheng-ti-jia-gou.html#disqus_thread" class="article-comment-link">comments</a>
+      
+
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/jquery/">jquery</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/整体架构/">整体架构</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-jquery-dong-hua-shi-xian-yuan-li" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2014/03/01/jquery-dong-hua-shi-xian-yuan-li.html" class="article-date">
+  <time datetime="2014-02-28T16:00:00.000Z" itemprop="datePublished">2014-03-01</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/javascript/">javascript</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2014/03/01/jquery-dong-hua-shi-xian-yuan-li.html">jquery动画实现原理</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>最近想写个动画库练练手，在写之前，先看了jquery动画方面的源代码，为此写篇博文记录一下心得体会。</p>
+<h2 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h2><p>jquery动画很强大，它有一个很强大的特性：<strong>动画队列</strong>，比如：</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">button</span> <span class="attr">id</span>=<span class="string">"animation-test"</span>&gt;</span>test<span class="tag">&lt;/<span class="name">button</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="undefined"></span></span><br><span class="line"><span class="javascript">    $(<span class="string">'#animation-test'</span>).click(<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span></span><br><span class="line"><span class="javascript">        $(<span class="keyword">this</span>).animate(&#123;<span class="attr">width</span>: <span class="number">200</span>&#125;).animate(&#123;<span class="attr">opacity</span>: <span class="number">0.5</span>&#125;);</span></span><br><span class="line"><span class="undefined">    &#125;);</span></span><br><span class="line"><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>示例：运行一下</p>
+
+<pre class="article-example">
+    <button id="animation-test">test</button>
+    <script>
+        $('#animation-test').click(function() {
+           $(this).animate({width: 200}).animate({opacity: 0.5});
+        });
+    </script>
+</pre>
+
+<p>可以看到，该按钮的动画按照调用<code>animate</code>的顺序播放了！</p>
+        
+          <p class="article-more-link">
+            <a href="/2014/03/01/jquery-dong-hua-shi-xian-yuan-li.html#more">阅读全文</a>
+          </p>
+        
+      
+    </div>
+    <footer class="article-footer">
+      
+        <a data-url="http://hushicai.github.io/2014/03/01/jquery-dong-hua-shi-xian-yuan-li.html" data-id="cjjbk4w8l000worv99epy0j9p" class="article-share-link" data-share="baidu">share</a>
+      
+
+      
+        <a href="http://hushicai.github.io/2014/03/01/jquery-dong-hua-shi-xian-yuan-li.html#disqus_thread" class="article-comment-link">comments</a>
+      
+
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/jquery/">jquery</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/动画原理/">动画原理</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-pi-liang-svn-delete" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2014/02/28/pi-liang-svn-delete.html" class="article-date">
+  <time datetime="2014-02-27T16:00:00.000Z" itemprop="datePublished">2014-02-28</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2014/02/28/pi-liang-svn-delete.html">批量svn delete</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>如果我们在某个目录中删除了一些已经在svn版本库中的文件或者目录，但是还没commit，<code>svn status</code>查看一下状态：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">!   x/xx</span><br><span class="line">!   x/xx/x.js</span><br><span class="line">!   x/xx/x.css</span><br><span class="line">!   x/xx/x.png</span><br><span class="line">?   x/xx/x.jpg  <span class="comment">## 其他状态的文件</span></span><br><span class="line">M   x/xx/xx.js  <span class="comment">## 其他状态的文件</span></span><br><span class="line">...</span><br></pre></td></tr></table></figure>
+<p>现在我们想<code>svn delete</code>一下带”!”状态的文件或者目录，如果被删除的数量不多，我们当然可以挨个<code>svn delete</code>。</p>
+<p>但是数量很多的情况下，<code>delete</code>起来就麻烦了，不可能挨个<code>delete</code>，这个时候可以利用shell来批量删除：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">svn status | grep ! | awk <span class="string">'&#123;print $2&#125;'</span> | xargs svn delete</span><br></pre></td></tr></table></figure>
+<p>再<code>svn status</code>一下，可以看到：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">D   x/xx</span><br><span class="line">D   x/xx/x.js</span><br><span class="line">D   x/xx/x.css</span><br><span class="line">D   x/xx/x.png</span><br><span class="line">?   x/xx/x.jpg </span><br><span class="line">M   x/xx/xx.js</span><br><span class="line">...</span><br></pre></td></tr></table></figure>
+<p>已经成功<code>delete</code>了，再<code>commit</code>一下就搞定了！</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      
+        <a data-url="http://hushicai.github.io/2014/02/28/pi-liang-svn-delete.html" data-id="cjjbk4w8k000vorv9q9fautpu" class="article-share-link" data-share="baidu">share</a>
+      
+
+      
+        <a href="http://hushicai.github.io/2014/02/28/pi-liang-svn-delete.html#disqus_thread" class="article-comment-link">comments</a>
+      
+
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/svn/">svn</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-tian-jia-yi-you-xiang-mu-dao-github" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2014/02/24/tian-jia-yi-you-xiang-mu-dao-github.html" class="article-date">
+  <time datetime="2014-02-23T16:00:00.000Z" itemprop="datePublished">2014-02-24</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2014/02/24/tian-jia-yi-you-xiang-mu-dao-github.html">添加已有项目到github</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>在本机上搞了一个项目，还没添加版本控制，现在想把它添加到github上，怎么办？</p>
+<p>我第一个想法就是这么干：在github上新建一个repo，clone到本机，然后把已有项目的代码拷贝过来。</p>
+<p>但是显然，这种方法很不方便，其实可以有更好的办法。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cd</span> my_project</span><br><span class="line">git init</span><br></pre></td></tr></table></figure>
+<p>这样就创建了一个local repo，现在就可以把代码添加进去：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git add .</span><br><span class="line">git commit -m <span class="string">"first commit"</span></span><br></pre></td></tr></table></figure>
+<p>ok，接下来就是创建remote repo了，到github上创建一个新的repo，怎么创建可以参考<a href="https://help.github.com/articles/create-a-repo" target="_blank" rel="noopener">这里</a>。</p>
+<p>创建完成后，就可以得到一个远程仓库地址，将该地址添加到local repo中：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git remote add origin https://github.com/yourname/my_project.git</span><br></pre></td></tr></table></figure>
+<p>更新remote repo到local repo中：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git pull origin master</span><br></pre></td></tr></table></figure>
+<p>现在，我们就可以把代码添加到github上了：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git push origin master</span><br></pre></td></tr></table></figure>
+<p>到github上查看一下，代码已经提交上去了，搞定！</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      
+        <a data-url="http://hushicai.github.io/2014/02/24/tian-jia-yi-you-xiang-mu-dao-github.html" data-id="cjjbk4w8i000torv9htjoo4k9" class="article-share-link" data-share="baidu">share</a>
+      
+
+      
+        <a href="http://hushicai.github.io/2014/02/24/tian-jia-yi-you-xiang-mu-dao-github.html#disqus_thread" class="article-comment-link">comments</a>
+      
+
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-qian-duan-kai-fa-ji-cheng-fang-an" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2014/02/23/qian-duan-kai-fa-ji-cheng-fang-an.html" class="article-date">
+  <time datetime="2014-02-22T16:00:00.000Z" itemprop="datePublished">2014-02-23</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2014/02/23/qian-duan-kai-fa-ji-cheng-fang-an.html">前端开发集成方案</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>在前端开发过程中，我们也许都会遇到这样的场景：</p>
+<ul>
+<li>有新项目了？A: 赶紧搭起开发环境; B:去xx项目那边拷一份过来改改吧；</li>
+<li>去哪下jquery 1.9.1版本啊？官网找半天没找着;</li>
+<li>代码里面写多了个逗号，导致ie报错了？赶紧人肉查一下；</li>
+<li>项目要上线了？赶紧想办法合并、压缩、加个版本号；</li>
+<li>…</li>
+</ul>
+<p>诸如此类的问题，老在做重复工作，太枯燥了…</p>
+<p>come on，别忘了我们是程序员，重复的工作应该交给程序来干！</p>
+<p>我们需要一种自动化的前端开发集成方案！</p>
+<p>那么，前端开发集成方案应该具备什么功能呢？在我看来，它需要以下技能：</p>
+<ul>
+<li>一个脚手架，用来自动生成项目的基础结构、生成一些基础代码等等。</li>
+<li>一个build工具，用来执行各项自动化任务，比如语法检查、合并、压缩等</li>
+<li>一个包管理器，用来导入一些基础库等</li>
+</ul>
+<p>基于以上需求，我找到了一套叫<a href="http://yeoman.io" target="_blank" rel="noopener">yeoman</a>的解决方案，它包括了三方面：</p>
+<ul>
+<li><code>yo</code>：脚手架工具</li>
+<li><code>bower</code>：前端资源管理器</li>
+<li><code>grunt</code>：任务型build工具</li>
+</ul>
+<p>以上三个工具是独立维护的，它们可以很好地工作在一起，组成一套完整的前端开发集成方案。</p>
+<h2 id="yo脚手架"><a href="#yo脚手架" class="headerlink" title="yo脚手架"></a>yo脚手架</h2><p><a href="https://github.com/yeoman/yo" target="_blank" rel="noopener">yo</a>是一个脚手架工具，安装它：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install -g yo</span><br></pre></td></tr></table></figure>
+<p><code>yo</code>可以生成多种类型的项目/代码，但这需要依赖于<a href="http://yeoman.io/community-generators.html" target="_blank" rel="noopener">generators</a>，比如我们想生成一个web应用，我们需要先安装一下<code>generator-webapp</code>：</p>
+        
+          <p class="article-more-link">
+            <a href="/2014/02/23/qian-duan-kai-fa-ji-cheng-fang-an.html#more">阅读全文</a>
+          </p>
+        
+      
+    </div>
+    <footer class="article-footer">
+      
+        <a data-url="http://hushicai.github.io/2014/02/23/qian-duan-kai-fa-ji-cheng-fang-an.html" data-id="cjjbk4w8j000uorv9ll50e9oh" class="article-share-link" data-share="baidu">share</a>
+      
+
+      
+        <a href="http://hushicai.github.io/2014/02/23/qian-duan-kai-fa-ji-cheng-fang-an.html#disqus_thread" class="article-comment-link">comments</a>
+      
+
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-gem-an-zhuang-compass-wen-ti" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2014/02/23/gem-an-zhuang-compass-wen-ti.html" class="article-date">
+  <time datetime="2014-02-22T16:00:00.000Z" itemprop="datePublished">2014-02-23</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2014/02/23/gem-an-zhuang-compass-wen-ti.html">gem安装compass问题</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>最近想玩玩<a href="http://compass-style.org/install/" target="_blank" rel="noopener">compass</a>，所以就试了一把，按照官网的说明，先安装compass：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">gem update --system &amp;&amp; gem install compass</span><br></pre></td></tr></table></figure>
+<p>安装完成后，却发现找不到compass命令（系统是mac os x 10.9）。</p>
+<p>这问题应该是gem把compass安装到了一个不在PATH中的目录所导致的，于是就开始了以下排查过程：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">which</span> ruby</span><br></pre></td></tr></table></figure>
+<p>我的是安装在<code>/usr/local/bin/ruby</code>，进到该目录中：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ls -l | grep ruby</span><br></pre></td></tr></table></figure>
+<p>找到<code>ruby</code>的原始安装目录：</p>
+<pre><code>ruby -&gt; ../Cellar/ruby/2.0.0-p195/bin/ruby
+</code></pre><p>进入到以上目录后，发现同目录下有个<code>compass</code>，而这个目录并不在PATH上，于是就出现了：</p>
+<pre><code>compass not found
+</code></pre><p>很显然，造成这个问题的原因就是因为：<code>ruby</code>是通过<code>brew</code>安装的，而<code>brew</code>安装<code>ruby</code>的实际目录并不在PATH上。</p>
+<p>所以，为了让compass命令可用，我们需要手工建立一个softlink：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hushicai: /usr/<span class="built_in">local</span>/bin $ ln -s ../Cellar/ruby/2.0.0-p195/bin/compass compass</span><br></pre></td></tr></table></figure>
+<p>搞定！</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      
+        <a data-url="http://hushicai.github.io/2014/02/23/gem-an-zhuang-compass-wen-ti.html" data-id="cjjbk4w8h000sorv9ey2eqcm9" class="article-share-link" data-share="baidu">share</a>
+      
+
+      
+        <a href="http://hushicai.github.io/2014/02/23/gem-an-zhuang-compass-wen-ti.html#disqus_thread" class="article-comment-link">comments</a>
+      
+
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-web-worker-jian-jie" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2014/02/21/web-worker-jian-jie.html" class="article-date">
+  <time datetime="2014-02-20T16:00:00.000Z" itemprop="datePublished">2014-02-21</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2014/02/21/web-worker-jian-jie.html">web worker简介</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p><a href="http://www.whatwg.org/specs/web-apps/current-work/multipage/workers.html" target="_blank" rel="noopener">Web Worker</a>规范定义了在网络应用中生成背景脚本的API。</p>
+<p>我们可以通过Web Worker执行一些操作，例如触发长时间运行的脚本以处理计算密集型任务，同时却不会阻碍 UI或其他脚本处理用户互动。</p>
+<p>值得注意的是，<a href="http://www.whatwg.org/specs/web-apps/current-work/multipage/workers.html" target="_blank" rel="noopener">规范</a>中提到了两种Worker：<a href="http://www.whatwg.org/specs/web-apps/current-work/multipage/workers.html#dedicated-workers-and-the-worker-interface" target="_blank" rel="noopener">专用Worker</a>以及<a href="http://www.whatwg.org/specs/web-apps/current-work/multipage/workers.html#shared-workers-and-the-sharedworker-interface" target="_blank" rel="noopener">共享Worker</a>。本文只讲专用Worker，下文称之为“Web Worker”或“Worker”。</p>
+<h2 id="入门"><a href="#入门" class="headerlink" title="入门"></a>入门</h2><p><code>Web Worker</code>是在独立线程中运行的，因此，它们执行的代码需要保存在一个单独的文件中，我们可以这样创建一个Worker：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> worker = <span class="keyword">new</span> Worker(<span class="string">'/assets/js/tests/simple-web-worker.js'</span>);</span><br></pre></td></tr></table></figure>
+<p>如果指定的异步下载文件存在，浏览器就会生成新的Worker线程。在完全下载并执行文件之前，系统不会生成Worker。如果指定的文件不存在，Worker就不会创建成功。</p>
+<h2 id="全局作用域"><a href="#全局作用域" class="headerlink" title="全局作用域"></a>全局作用域</h2><p>Worker拥有一个独立于JavaScript执行环境的全局作用域，它不能访问DOM以及大部分BOM，它只能使用JavaScript的一部分功能：</p>
+<ul>
+<li><code>XMLHttpRequest</code></li>
+<li><code>self</code>，Worker作用域内的全局对象，等同于Worker中的<code>this</code></li>
+<li><code>navigator</code>，这是个被阉割的对象，在Worker中，它仅包含了部分属性</li>
+<li><code>location</code>，等同于<code>window.location</code>，但是所有属性都是只读的。</li>
+<li><code>setTimeout</code>和<code>setInterval</code></li>
+<li>一个<code>importScripts</code>方法，用于向Worker注入外部脚本文件。</li>
+<li>所有ECMAScript规范中定义的构造器。</li>
+</ul>
+<p>既然是一个独立的执行环境，那Worker中的所有全局变量都应该是<code>self</code>的属性，比如：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">onmessage = <span class="function"><span class="keyword">function</span>(<span class="params">e</span>) </span>&#123;</span><br><span class="line">    <span class="comment">// ...</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>这样写虽然没问题，但是不好理解，所以建议这么写：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">self.onmessage = <span class="function"><span class="keyword">function</span>(<span class="params">e</span>) </span>&#123;</span><br><span class="line">    <span class="comment">// ...</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>其实，更优雅的方式应该是这样：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">self.addEventListener(<span class="string">'message'</span>, <span class="function"><span class="keyword">function</span>(<span class="params">e</span>) </span>&#123;</span><br><span class="line">    <span class="comment">// ...</span></span><br><span class="line">&#125;, <span class="literal">false</span>);</span><br></pre></td></tr></table></figure>
+<h2 id="消息传递"><a href="#消息传递" class="headerlink" title="消息传递"></a>消息传递</h2><p>Worker不能直接影响页面，它需要通过一个消息系统来传递消息。</p>
+<p>Worker可以通过<code>postMessage</code>方法来传递消息，例如：</p>
+        
+          <p class="article-more-link">
+            <a href="/2014/02/21/web-worker-jian-jie.html#more">阅读全文</a>
+          </p>
+        
+      
+    </div>
+    <footer class="article-footer">
+      
+        <a data-url="http://hushicai.github.io/2014/02/21/web-worker-jian-jie.html" data-id="cjjbk4w8f000rorv94cleez55" class="article-share-link" data-share="baidu">share</a>
+      
+
+      
+        <a href="http://hushicai.github.io/2014/02/21/web-worker-jian-jie.html#disqus_thread" class="article-comment-link">comments</a>
+      
+
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-zui-liu-xing-javascript-dai-ma-gui-fan" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2014/02/20/zui-liu-xing-javascript-dai-ma-gui-fan.html" class="article-date">
+  <time datetime="2014-02-19T16:00:00.000Z" itemprop="datePublished">2014-02-20</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2014/02/20/zui-liu-xing-javascript-dai-ma-gui-fan.html">最流行javascript代码规范</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>什么是javascript代码规范？众说纷纭吧！其实，我们可以换个问题：小伙伴们都是怎样写javascript的？</p>
+<p>近日，国外某位大神通过分析github上托管的javascript源代码，得出了一些<a href="http://sideeffect.kr/popularconvention#javascript" target="_blank" rel="noopener">有趣的结果</a>。</p>
+<p>有码有真相，有木有！！！</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      
+        <a data-url="http://hushicai.github.io/2014/02/20/zui-liu-xing-javascript-dai-ma-gui-fan.html" data-id="cjjbk4w8d000porv9h72dkhny" class="article-share-link" data-share="baidu">share</a>
+      
+
+      
+        <a href="http://hushicai.github.io/2014/02/20/zui-liu-xing-javascript-dai-ma-gui-fan.html#disqus_thread" class="article-comment-link">comments</a>
+      
+
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-mac-os-x-kai-ji-qi-dong-goagent" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2014/02/19/mac-os-x-kai-ji-qi-dong-goagent.html" class="article-date">
+  <time datetime="2014-02-18T16:00:00.000Z" itemprop="datePublished">2014-02-19</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2014/02/19/mac-os-x-kai-ji-qi-dong-goagent.html">mac os x开机启动goagent</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>怎么在mac os x上让goagent开机自启动呢？</p>
+<p>其实很简单，在goagent打包的文件中就有一个叫<code>addto-startup.py</code>的文件。</p>
+<p>我在目录<code>goagent/local</code>下找到了它，那么就需要执行以下命令就可以开机自启动了：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo python addto-startup.py</span><br><span class="line">sudo launchctl load /System/Library/LaunchDaemons/org.goagent.macos.plist</span><br></pre></td></tr></table></figure>
+<p>一切ok！</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      
+        <a data-url="http://hushicai.github.io/2014/02/19/mac-os-x-kai-ji-qi-dong-goagent.html" data-id="cjjbk4w8e000qorv9nnfbrxlz" class="article-share-link" data-share="baidu">share</a>
+      
+
+      
+        <a href="http://hushicai.github.io/2014/02/19/mac-os-x-kai-ji-qi-dong-goagent.html#disqus_thread" class="article-comment-link">comments</a>
+      
+
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-vml-yuan-su-she-zhi-css-opacity-yang-shi-dao-zhi-de-tu-xiang-ju-chi-wen-ti" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2014/02/18/vml-yuan-su-she-zhi-css-opacity-yang-shi-dao-zhi-de-tu-xiang-ju-chi-wen-ti.html" class="article-date">
+  <time datetime="2014-02-17T16:00:00.000Z" itemprop="datePublished">2014-02-18</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2014/02/18/vml-yuan-su-she-zhi-css-opacity-yang-shi-dao-zhi-de-tu-xiang-ju-chi-wen-ti.html">vml元素设置css opacity样式导致的图像锯齿问题</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>使用vml创建图形时，因为图形下还有一张底图，所以需要将vml创建的图形设置一定的透明度，以便可以看见下面的底图。</p>
+<p>开始时，使用了ie的滤镜透明<code>filter:alpha(opacity=xxx)</code>来设置图形的透明度，结果在ie下出现了描边锯齿。</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">style</span> <span class="attr">type</span>=<span class="string">"text/css"</span>&gt;</span><span class="undefined"></span></span><br><span class="line"><span class="undefined">    .shape &#123;</span></span><br><span class="line"><span class="undefined">        opacity: 0.5;</span></span><br><span class="line"><span class="undefined">        filter: alpha(opacity=50)</span></span><br><span class="line"><span class="undefined">    &#125;</span></span><br><span class="line"><span class="undefined"></span><span class="tag">&lt;/<span class="name">style</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">v:shape</span> <span class="attr">class</span>=<span class="string">"shape"</span> <span class="attr">path</span>=<span class="string">"xxx"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">v:fill</span> <span class="attr">color</span>=<span class="string">"red"</span>&gt;</span><span class="tag">&lt;/<span class="name">v:fill</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">v:stroke</span> <span class="attr">color</span>=<span class="string">"red"</span>&gt;</span><span class="tag">&lt;/<span class="name">v:stroke</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">v:shape</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>起初还以为是vml的数字精度问题导致的，后来排查了大半天才发现是使用了滤镜透明导致的。</p>
+<p>改成vml元素的opacity属性才干掉了锯齿：</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">v:shape</span> <span class="attr">class</span>=<span class="string">"shape"</span> <span class="attr">path</span>=<span class="string">"xxx"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">v:fill</span> <span class="attr">color</span>=<span class="string">"red"</span> <span class="attr">opacity</span>=<span class="string">"0.5"</span>&gt;</span><span class="tag">&lt;/<span class="name">v:fill</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">v:stroke</span> <span class="attr">color</span>=<span class="string">"red"</span> <span class="attr">opacity</span>=<span class="string">"0.5"</span>&gt;</span><span class="tag">&lt;/<span class="name">v:stroke</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">v:shape</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+    <footer class="article-footer">
+      
+        <a data-url="http://hushicai.github.io/2014/02/18/vml-yuan-su-she-zhi-css-opacity-yang-shi-dao-zhi-de-tu-xiang-ju-chi-wen-ti.html" data-id="cjjbk4w8c000oorv9htngtcmn" class="article-share-link" data-share="baidu">share</a>
+      
+
+      
+        <a href="http://hushicai.github.io/2014/02/18/vml-yuan-su-she-zhi-css-opacity-yang-shi-dao-zhi-de-tu-xiang-ju-chi-wen-ti.html#disqus_thread" class="article-comment-link">comments</a>
+      
+
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+  
+    <nav id="page-nav">
+      <a class="extend prev" rel="prev" href="/page/3/">&laquo; Prev</a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><span class="page-number current">4</span><a class="page-number" href="/page/5/">5</a><a class="page-number" href="/page/6/">6</a><a class="extend next" rel="next" href="/page/5/">Next &raquo;</a>
+    </nav>
+  
+</section>
+      
+      <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">categories</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/javascript/">javascript</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/vim/">vim</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/翻译/">翻译</a><span class="category-list-count">1</span></li></ul>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">tags</h3>
+    <div class="widget">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Array/">Array</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Caps-Lock/">Caps Lock</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Ctrl/">Ctrl</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/EventSource/">EventSource</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/File-Api/">File Api</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/FileReader/">FileReader</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/HTML5/">HTML5</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/NodeList/">NodeList</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Start-Render-Time/">Start Render Time</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Time-Of-First-Byte/">Time Of First Byte</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/WebSocket/">WebSocket</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/above-the-fold/">above the fold</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/animation/">animation</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/binary-tree/">binary tree</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/brew/">brew</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/brew-install/">brew install</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/certificate/">certificate</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/chrome/">chrome</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/clipboard/">clipboard</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/color/">color</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/command/">command</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/completion/">completion</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/cursor/">cursor</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/dircolors/">dircolors</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/directory/">directory</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/fail/">fail</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/fixed/">fixed</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/function-declarations/">function declarations</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/function-expressions/">function expressions</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/goagent/">goagent</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/http-proxy/">http_proxy</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/https-proxy/">https_proxy</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ios/">ios</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/javascript/">javascript</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/jquery/">jquery</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/js/">js</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/long-polling/">long polling</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ls/">ls</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/lscolors/">lscolors</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/mac-os-x/">mac os x</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/mac-osx/">mac osx</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/moving/">moving</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/nerdcommenter/">nerdcommenter</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/not-work/">not work</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/oh-my-zsh/">oh-my-zsh</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/open/">open</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/openssl/">openssl</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/parameters/">parameters</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/plugin/">plugin</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/polling/">polling</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/quicksort/">quicksort</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/shell/">shell</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/slice/">slice</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/space/">space</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ssl/">ssl</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/supertab/">supertab</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/svn/">svn</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/tern/">tern</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/token/">token</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ubuntu/">ubuntu</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ultisnips/">ultisnips</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/v8/">v8</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/vim/">vim</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/windows/">windows</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/youcompleteme/">youcompleteme</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/zsh/">zsh</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/二叉树/">二叉树</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/动画原理/">动画原理</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/动画库/">动画库</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/卡住/">卡住</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/命令/">命令</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/命令行/">命令行</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/回滚/">回滚</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/固定定位/">固定定位</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/墙/">墙</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/失效/">失效</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/开始渲染时间/">开始渲染时间</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/快排/">快排</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/快速排序/">快速排序</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/整体架构/">整体架构</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/无法安装/">无法安装</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/服务器推/">服务器推</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/本地文件/">本地文件</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/源代码/">源代码</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/白屏时间/">白屏时间</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/目录/">目录</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/空格/">空格</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/证书错误/">证书错误</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/词法分析/">词法分析</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/重定向/">重定向</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/顺序存储/">顺序存储</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/颜色/">颜色</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/首字节时间/">首字节时间</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/首屏时间/">首屏时间</a><span class="tag-list-count">1</span></li></ul>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">tagcloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/Array/" style="font-size: 10px;">Array</a> <a href="/tags/Caps-Lock/" style="font-size: 10px;">Caps Lock</a> <a href="/tags/Ctrl/" style="font-size: 10px;">Ctrl</a> <a href="/tags/EventSource/" style="font-size: 10px;">EventSource</a> <a href="/tags/File-Api/" style="font-size: 10px;">File Api</a> <a href="/tags/FileReader/" style="font-size: 10px;">FileReader</a> <a href="/tags/HTML5/" style="font-size: 10px;">HTML5</a> <a href="/tags/NodeList/" style="font-size: 10px;">NodeList</a> <a href="/tags/Start-Render-Time/" style="font-size: 10px;">Start Render Time</a> <a href="/tags/Time-Of-First-Byte/" style="font-size: 10px;">Time Of First Byte</a> <a href="/tags/WebSocket/" style="font-size: 10px;">WebSocket</a> <a href="/tags/above-the-fold/" style="font-size: 10px;">above the fold</a> <a href="/tags/animation/" style="font-size: 10px;">animation</a> <a href="/tags/binary-tree/" style="font-size: 10px;">binary tree</a> <a href="/tags/brew/" style="font-size: 10px;">brew</a> <a href="/tags/brew-install/" style="font-size: 10px;">brew install</a> <a href="/tags/certificate/" style="font-size: 10px;">certificate</a> <a href="/tags/chrome/" style="font-size: 10px;">chrome</a> <a href="/tags/clipboard/" style="font-size: 10px;">clipboard</a> <a href="/tags/color/" style="font-size: 10px;">color</a> <a href="/tags/command/" style="font-size: 10px;">command</a> <a href="/tags/completion/" style="font-size: 10px;">completion</a> <a href="/tags/cursor/" style="font-size: 10px;">cursor</a> <a href="/tags/dircolors/" style="font-size: 10px;">dircolors</a> <a href="/tags/directory/" style="font-size: 10px;">directory</a> <a href="/tags/fail/" style="font-size: 10px;">fail</a> <a href="/tags/fixed/" style="font-size: 10px;">fixed</a> <a href="/tags/function-declarations/" style="font-size: 10px;">function declarations</a> <a href="/tags/function-expressions/" style="font-size: 10px;">function expressions</a> <a href="/tags/goagent/" style="font-size: 10px;">goagent</a> <a href="/tags/http-proxy/" style="font-size: 10px;">http_proxy</a> <a href="/tags/https-proxy/" style="font-size: 10px;">https_proxy</a> <a href="/tags/ios/" style="font-size: 10px;">ios</a> <a href="/tags/javascript/" style="font-size: 10px;">javascript</a> <a href="/tags/jquery/" style="font-size: 15px;">jquery</a> <a href="/tags/js/" style="font-size: 20px;">js</a> <a href="/tags/long-polling/" style="font-size: 10px;">long polling</a> <a href="/tags/ls/" style="font-size: 15px;">ls</a> <a href="/tags/lscolors/" style="font-size: 10px;">lscolors</a> <a href="/tags/mac-os-x/" style="font-size: 10px;">mac os x</a> <a href="/tags/mac-osx/" style="font-size: 15px;">mac osx</a> <a href="/tags/moving/" style="font-size: 10px;">moving</a> <a href="/tags/nerdcommenter/" style="font-size: 10px;">nerdcommenter</a> <a href="/tags/not-work/" style="font-size: 10px;">not work</a> <a href="/tags/oh-my-zsh/" style="font-size: 10px;">oh-my-zsh</a> <a href="/tags/open/" style="font-size: 10px;">open</a> <a href="/tags/openssl/" style="font-size: 10px;">openssl</a> <a href="/tags/parameters/" style="font-size: 10px;">parameters</a> <a href="/tags/plugin/" style="font-size: 10px;">plugin</a> <a href="/tags/polling/" style="font-size: 10px;">polling</a> <a href="/tags/quicksort/" style="font-size: 10px;">quicksort</a> <a href="/tags/shell/" style="font-size: 15px;">shell</a> <a href="/tags/slice/" style="font-size: 10px;">slice</a> <a href="/tags/space/" style="font-size: 10px;">space</a> <a href="/tags/ssl/" style="font-size: 10px;">ssl</a> <a href="/tags/supertab/" style="font-size: 10px;">supertab</a> <a href="/tags/svn/" style="font-size: 15px;">svn</a> <a href="/tags/tern/" style="font-size: 10px;">tern</a> <a href="/tags/token/" style="font-size: 10px;">token</a> <a href="/tags/ubuntu/" style="font-size: 10px;">ubuntu</a> <a href="/tags/ultisnips/" style="font-size: 10px;">ultisnips</a> <a href="/tags/v8/" style="font-size: 15px;">v8</a> <a href="/tags/vim/" style="font-size: 20px;">vim</a> <a href="/tags/windows/" style="font-size: 10px;">windows</a> <a href="/tags/youcompleteme/" style="font-size: 10px;">youcompleteme</a> <a href="/tags/zsh/" style="font-size: 20px;">zsh</a> <a href="/tags/二叉树/" style="font-size: 10px;">二叉树</a> <a href="/tags/动画原理/" style="font-size: 10px;">动画原理</a> <a href="/tags/动画库/" style="font-size: 10px;">动画库</a> <a href="/tags/卡住/" style="font-size: 10px;">卡住</a> <a href="/tags/命令/" style="font-size: 10px;">命令</a> <a href="/tags/命令行/" style="font-size: 10px;">命令行</a> <a href="/tags/回滚/" style="font-size: 10px;">回滚</a> <a href="/tags/固定定位/" style="font-size: 10px;">固定定位</a> <a href="/tags/墙/" style="font-size: 10px;">墙</a> <a href="/tags/失效/" style="font-size: 10px;">失效</a> <a href="/tags/开始渲染时间/" style="font-size: 10px;">开始渲染时间</a> <a href="/tags/快排/" style="font-size: 10px;">快排</a> <a href="/tags/快速排序/" style="font-size: 10px;">快速排序</a> <a href="/tags/整体架构/" style="font-size: 10px;">整体架构</a> <a href="/tags/无法安装/" style="font-size: 10px;">无法安装</a> <a href="/tags/服务器推/" style="font-size: 10px;">服务器推</a> <a href="/tags/本地文件/" style="font-size: 10px;">本地文件</a> <a href="/tags/源代码/" style="font-size: 10px;">源代码</a> <a href="/tags/白屏时间/" style="font-size: 10px;">白屏时间</a> <a href="/tags/目录/" style="font-size: 10px;">目录</a> <a href="/tags/空格/" style="font-size: 10px;">空格</a> <a href="/tags/证书错误/" style="font-size: 10px;">证书错误</a> <a href="/tags/词法分析/" style="font-size: 10px;">词法分析</a> <a href="/tags/重定向/" style="font-size: 10px;">重定向</a> <a href="/tags/顺序存储/" style="font-size: 10px;">顺序存储</a> <a href="/tags/颜色/" style="font-size: 10px;">颜色</a> <a href="/tags/首字节时间/" style="font-size: 10px;">首字节时间</a> <a href="/tags/首屏时间/" style="font-size: 10px;">首屏时间</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">archive</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/01/">一月 2016</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/10/">十月 2015</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/09/">九月 2015</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/05/">五月 2015</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/04/">四月 2015</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/12/">十二月 2014</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/08/">八月 2014</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/04/">四月 2014</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/03/">三月 2014</a><span class="archive-list-count">11</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/02/">二月 2014</a><span class="archive-list-count">14</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/01/">一月 2014</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/11/">十一月 2013</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/09/">九月 2013</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/07/">七月 2013</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/06/">六月 2013</a><span class="archive-list-count">1</span></li></ul>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">recent_posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2016/01/08/rang-vim-zhi-chi-clipboard.html">让vim支持`+clipboard`</a>
+          </li>
+        
+          <li>
+            <a href="/2016/01/08/ls-mu-lu-yan-se.html">ls目录颜色</a>
+          </li>
+        
+          <li>
+            <a href="/2016/01/07/win7-jiang-CapsLock-ying-she-wei-Ctrl.html">win7将CapsLock映射为Ctrl</a>
+          </li>
+        
+          <li>
+            <a href="/2015/10/09/python-interative-mode-tab-completion.html">让python在交互模式下支持tab completion</a>
+          </li>
+        
+          <li>
+            <a href="/2015/09/15/git-she-zhi-global-ignore.html">git设置global ignore</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+    
+
+  
+</aside>
+      
+    </div>
+    <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2018 hushicai<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>.
+    </div>
+  </div>
+</footer>
+
+  </div>
+  <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+    <a href="https://github.com/hushicai" class="mobile-nav-link">Github</a>
+  
+</nav>
+  <!-- totop start -->
+<div id="totop">
+<a title="totop"><img src="/img/scrollup.png"/></a>
+</div>
+
+<!-- totop end -->
+
+<!-- disqus start -->
+
+<!-- disqus end -->
+
+<!-- 百度分享 start -->
+
+<div id="article-share-box" class="article-share-box">
+  <div id="bdshare" class="bdsharebuttonbox article-share-links">
+    <a class="article-share-weibo" data-cmd="tsina" title="分享到新浪微博"></a>
+    <a class="article-share-weixin" data-cmd="weixin" title="分享到微信"></a>
+    <a class="article-share-qq" data-cmd="sqq" title="分享到QQ"></a>
+    <a class="article-share-renren" data-cmd="renren" title="分享到人人网"></a>
+    <a class="article-share-more" data-cmd="more" title="更多"></a>
+  </div>
+</div>
+<script>window._bd_share_config={"common":{},"share":{"bdCustomStyle":"/css/bdshare.css"}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?cdnversion='+~(-new Date()/36e5)];</script>
+
+<!-- 百度分享 end -->
+
+<script src="http://libs.baidu.com/jquery/1.9.1/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+
+<script src="/js/script.js"></script>
+
+<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "//hm.baidu.com/hm.js?eebaea29f083e5cc508252c0f12389ef";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
+</div>
+</body>
+</html>
